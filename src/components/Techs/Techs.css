@@ -1,0 +1,39 @@
+.techs {
+  background-color: #F5F5F5;
+  padding: 100px 70px;
+}
+
+.techs__heading {
+  margin: 90px auto 0 auto;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.techs__caption {
+  margin: 26px auto 0 auto;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  max-width: 460px;
+
+}
+
+.techs__btns-wrapper {
+  margin: 100px auto 0 auto;
+}
+
+.techs__btn {
+  margin: 0 5px;
+  border: 0;
+  border-radius: 10px;
+  width: 90px;
+  height: 60px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}

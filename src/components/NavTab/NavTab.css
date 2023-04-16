@@ -1,0 +1,16 @@
+.navtab {
+  margin: 151px auto 0 auto;
+  padding-bottom: 30px;
+}
+
+.navtab__btn {
+  margin: 0 5px;
+  border: 0;
+  border-radius: 10px;
+  width: 96px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #E8E8E8;
+}

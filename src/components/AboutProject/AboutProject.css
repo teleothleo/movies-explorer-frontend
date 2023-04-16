@@ -1,0 +1,68 @@
+.aboutProject {
+  margin: 110px 70px 0 70px;
+}
+
+.aboutProject__wrapper-caption {
+  margin-top: 70px;
+  display: flex;
+}
+
+.aboutProject__article {
+  flex-grow: 1;
+}
+
+.aboutProject__article-heading {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  text-align: start;
+
+}
+
+.aboutProject__article-caption {
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: start;
+  line-height: 20px;
+}
+
+.progress-bar {
+  display: flex;
+  margin: 110px 0;
+}
+
+.progress-bar__fraction {
+  flex-grow: 4;
+}
+
+.progress-bar__fraction_backend {
+  flex-grow: 1;
+
+}
+
+.progress-bar__fraction-fill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F2F2;
+  height: 36px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.progress-bar__fraction-fill_backend {
+  background-color: #000;
+  color: white;
+}
+
+.progress-bar__backend-caption {
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+}

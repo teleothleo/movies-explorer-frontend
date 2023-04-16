@@ -1,0 +1,30 @@
+.filterCheckbox {
+  display: flex;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+
+.filterCheckbox__tumbler {
+  border-radius: 10px;
+  width: 36px;
+  height: 20px;
+  background-color: #EBEBEB;
+  background-image: url("../../images/checkbox-thumb.svg");
+  background-repeat: no-repeat;
+  background-position: 10% 50%;
+}
+
+.filterCheckbox__tumbler_active {
+  background-color: #2BE080;
+  background-image: url("../../images/checkbox-thumb-active.svg");
+  background-position: 90% 50%;
+}
+
+.filterCheckbox__caption {
+  margin-left: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+
+}

@@ -1,0 +1,17 @@
+.preloader {
+  width: 100%;
+  height: 166px;
+}
+
+.preloader__load-btn {
+  margin-top: 50px;
+  width: 320px;
+  height: 36px;
+  border: 1px #E8E8E8 solid;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  cursor: pointer;
+}
