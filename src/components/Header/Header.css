@@ -4,17 +4,23 @@
   justify-content: space-between;
 }
 
-
 .header__nav-wrapper {
   display: flex;
   align-items: center;
 }
 
-.header__logo {
-  width: 38px;
+.header__logo-link {
   height: 38px;
-  cursor: pointer;
+  max-height: 38px;
+  width: 38px;
+  max-width: 38px;
   margin-right: 44px;
+  cursor: pointer;
+}
+
+.header__logo {
+  height: 38px;
+  width: 38px;
 }
 
 

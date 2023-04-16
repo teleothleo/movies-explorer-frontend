@@ -4,6 +4,7 @@
 @import url(./components/AboutMe/AboutMe.css);
 @import url(./components/AboutProject/AboutProject.css);
 @import url(./components/App/App.css);
+@import url(./components/BadWay/BadWay.css);
 @import url(./components/FilterCheckbox/FilterCheckbox.css);
 @import url(./components/Footer/Footer.css);
 @import url(./components/Header/Header.css);
@@ -35,12 +36,13 @@ p, a, h1, h2, h3, div, button, input {
   padding: 0;
 }
 
-.btn-text {
+.btn-link {
   transition: 0.1s ease-out;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.btn-text:hover {
+.btn-link:hover {
   opacity: 0.7;
 }
 
