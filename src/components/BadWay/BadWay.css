@@ -16,18 +16,18 @@
   font-size: 140px;
   line-height: 169px;
   font-weight: 400;
-
-
 }
 
 .badWay__caption {
+  margin-top: 5px;
   font-size: 16px;
   line-height: 19px;
-
 }
 
 .badWay__return-link {
   bottom: 60px;
   position: absolute;
   color: black;
+  font-size: 14px;
+  line-height: 17px;
 }
