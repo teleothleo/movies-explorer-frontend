@@ -11,10 +11,10 @@ const Register = () => {
         <form className="register__form">
           <label className="register__label" htmlFor="reg-name">Имя</label>
           <input className="register__input" id="reg-name" type="text" placeholder=".." />
-          <span className="register__error-span register__error-span_active">Error message for name</span>
+          <span className="register__error-span">Error message for name</span>
           <label className="register__label" htmlFor="reg-email">E-mail</label>
           <input className="register__input" id="reg-email" type="email" placeholder=".." />
-          <span className="register__error-span register__error-span_active">Error message for email</span>
+          <span className="register__error-span">Error message for email</span>
           <label className="register__label" htmlFor="reg-psw">Пароль</label>
           <input className="register__input" id="reg-psw" type="password" placeholder=".." />
           <span className="register__error-span register__error-span_active">Error message for psw</span>

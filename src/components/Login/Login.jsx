@@ -12,10 +12,10 @@ const Login = () => {
         <form className="login__form">
           <label className="login__label" htmlFor="login-email">E-mail</label>
           <input className="login__input" id="login-email" type="email" placeholder=".." />
-          <span className="login__error-span login__error-span_active">Error message for email</span>
+          <span className="login__error-span">Error message for email</span>
           <label className="login__label" htmlFor="login-psw">Пароль</label>
           <input className="login__input" id="login-psw" type="password" placeholder=".." />
-          <span className="login__error-span login__error-span_active">Error message for psw</span>
+          <span className="login__error-span">Error message for psw</span>
         </form>
       </div>
       <div>

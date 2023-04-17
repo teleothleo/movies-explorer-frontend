@@ -1,6 +1,6 @@
 .techs {
   background-color: #F5F5F5;
-  padding: 100px 70px;
+  padding: 100px 70px 95px 70px;
 }
 
 .techs__heading {
@@ -24,11 +24,11 @@
 }
 
 .techs__btns-wrapper {
-  margin: 100px auto 0 auto;
+  margin: 95px auto 0 auto;
 }
 
 .techs__btn {
-  margin: 0 5px;
+  margin: 5px;
   border: 0;
   border-radius: 10px;
   width: 90px;
@@ -36,4 +36,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
+  font-size: 14px;
+  line-height: 17px;
 }

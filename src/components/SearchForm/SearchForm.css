@@ -1,5 +1,5 @@
 .searchForm {
-  padding: 60px 0 69px 0;
+  padding: 78px 0 69px 0;
   margin: 0 70px;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@
   padding: 0 6px 0 22px;
   margin-bottom: 41px;
   border-radius: 23px;
+  box-sizing: border-box;
 }
 
 .searchForm__input {
@@ -24,6 +25,13 @@
   background-color: #F9F9F9;
   border: none;
   outline: none;
+}
+
+.searchForm__input::placeholder {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  color: #A0A0A0;
 }
 
 .searchForm__btn {

@@ -11,6 +11,10 @@
   flex-grow: 1;
 }
 
+.aboutProject__article:first-child {
+  margin-right: 50px;
+}
+
 .aboutProject__article-heading {
   font-weight: 400;
   font-size: 20px;
@@ -34,12 +38,11 @@
 }
 
 .progress-bar__fraction {
-  flex-grow: 4;
+  flex-grow: 1.05;
 }
 
 .progress-bar__fraction_backend {
-  flex-grow: 1;
-
+  flex-grow: 0.2;
 }
 
 .progress-bar__fraction-fill {

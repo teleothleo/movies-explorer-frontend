@@ -1,6 +1,6 @@
 .portfolio {
   margin: 0 70px;
-  padding-bottom: 105px;
+  padding-bottom: 184px;
   display: flex;
   flex-direction: column;
   text-align: start;
@@ -18,7 +18,7 @@
   border: none;
   background-color: white;
   padding-top: 20px;
-  padding-bottom: 19px;
+  padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
