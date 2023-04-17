@@ -1,11 +1,10 @@
 .header {
-  margin: 0 70px;
+  margin: 18px 70px 0 70px;
   display: flex;
   justify-content: space-between;
 }
 
 .header__nav-wrapper {
-  margin-top: 18px;
   display: flex;
   align-items: center;
 }
@@ -24,7 +23,6 @@
   width: 38px;
 }
 
-
 .header__link {
   margin-right: 16px;
   font-weight: 400;
@@ -32,19 +30,20 @@
   line-height: 18px;
   text-decoration: none;
   color: black;
+  outline: none;
 }
 
 .header__link_active {
   font-weight: 500;
 }
 
-.header__auth-wrapper {
-  margin-top: 18px;
+.auth-btn {
   display: flex;
   align-items: center;
 }
 
-.header__signup-btn {
+.auth__signup-btn {
+  margin-top: 3px;
   background-color: white;
   font-weight: 500;
   font-size: 12px;
@@ -53,9 +52,9 @@
   color: black;
 }
 
-.header__signin-btn {
+.auth__signin-btn {
   padding: 8px 20px;
-  margin: 0 0 0 30px;
+  margin: 3px 0 0 30px;
   background-color: black;
   font-weight: 500;
   font-size: 12px;
@@ -65,7 +64,7 @@
   border-radius: 3px;
 }
 
-.header__account-text-btn {
+.auth-btn__text {
   background-color: white;
   font-weight: 500;
   font-size: 14px;
@@ -74,14 +73,52 @@
   color: black;
 }
 
-.header__account-btn {
-  background-image: url("../../images/profile.svg");
-  background-repeat: no-repeat;
-  background-position: center;
+.auth-btn__icon {
   background-color: #F9F9F9;
-  border: none;
   border-radius: 4px;
-  width: 26px;
-  height: 30px;
+  padding: 8px 7.25px;
+  width: 11.5px;
+  height: 14px;
   margin-left: 17px;
+}
+
+.header__auth-menu-btn {
+  display: none;
+}
+
+.menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    margin: 18px 30px 0 30px;
+  }
+
+  .auth-btn {
+    display: none;
+  }
+
+  .header__auth-menu-btn {
+    display: block;
+    margin-top: 8px;
+    margin-right: 8px;
+    width: 28px;
+    height: 23px;
+    border: none;
+    outline: none;
+    background-color: #00000000;
+    background-image: url("../../images/menu.svg");
+    background-repeat: no-repeat;
+    transition: 0.2s ease-out;
+  }
+
+  .header__auth-menu-btn_active {
+    position: absolute;
+    z-index: 2;
+    top: 21px;
+    right: 11px;
+    background-image: url("../../images/menu-active.svg");
+  }
+
 }

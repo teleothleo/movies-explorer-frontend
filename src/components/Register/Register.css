@@ -110,5 +110,23 @@
   line-height: 17px;
   background-color: white;
   color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    justify-content: normal;
+  }
+
+  .register__logo-link {
+    margin-top: 232px;
+  }
+
+  .register__submit-btn {
+    margin-top: 134px;
+  }
+
+  .register__signin-wrapper {
+    margin-bottom: 0;
+  }
 
 }

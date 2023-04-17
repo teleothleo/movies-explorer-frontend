@@ -1,83 +1,100 @@
 
 import { Route, Routes } from "react-router-dom";
-import logo from '../../images/logo.svg';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../images/logo.svg';
+import authIcon from '../../images/profile.svg';
+import { useMenuState } from "../../utils/MenuContext";
+import Menu from "../Menu/Menu";
 
 const Header = () => {
   const navigate = useNavigate();
-
+  const { isActive, setState } = useMenuState();
 
   return (
-    <div className="header">
-      <Routes>
+    <Routes>
 
-        <Route path="/" element={
-          <>
-            <nav className="header__nav-wrapper">
+      <Route path="/" element={
+        <div className="header">
+          <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
             </a>
-            </nav>
-            <div className="header__auth-wrapper">
-              <button onClick={() => navigate('/signup')} className="header__signup-btn btn-link">Регистрация</button>
-              <button onClick={() => navigate('/signin')} className="header__signin-btn btn-black">Войти</button>
-            </div>
-          </>
-        } />
+          </nav>
+          <div className="auth">
+            <button onClick={() => navigate('/signup')} className="auth__signup-btn btn-link">Регистрация</button>
+            <button onClick={() => navigate('/signin')} className="auth__signin-btn btn-black">Войти</button>
+          </div>
+        </div>
+      } />
 
-        <Route path="/movies" element={
-          <>
-            <nav className="header__nav-wrapper">
-              <a href="/" className="header__logo-link">
-                <img className="header__logo" src={logo} alt="Logo" />
-              </a>
-              <a href="/movies" className="header__link btn-link header__link_active">Фильмы</a>
-              <a href="/saved-movies" className="header__link btn-link">Сохранённые фильмы</a>
-            </nav>
+      <Route path="/movies" element={
+        <div className="header">
+          <nav className="header__nav-wrapper">
+            <a href="/" className="header__logo-link">
+              <img className="header__logo" src={logo} alt="Logo" />
+            </a>
+            <a href="/movies" className="header__link btn-link header__link_active">Фильмы</a>
+            <a href="/saved-movies" className="header__link btn-link">Сохранённые фильмы</a>
+          </nav>
 
-            <div className="header__auth-wrapper">
-              <button onClick={() => navigate('/profile')} className="header__account-text-btn btn-link">Аккаунт</button>
-              <button onClick={() => navigate('/profile')} className="header__account-btn btn-white" />
-            </div>
-          </>
-        } />
+          <div onClick={() => navigate('/profile')} className="auth-btn btn-link">
+            <p className="auth-btn__text">Аккаунт</p>
+            <img src={authIcon} className="auth-btn__icon" alt="Auth" />
+          </div>
+          {isActive && <Menu />}
+          <button onClick={() => setState(!isActive)} 
+            className={`${isActive
+            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
+            : "header__auth-menu-btn btn-link"}`} />
+        </div>
+      } />
 
-        <Route path="/saved-movies" element={
-          <>
-            <nav className="header__nav-wrapper">
-              <a href="/" className="header__logo-link">
-                <img className="header__logo" src={logo} alt="Logo" />
-              </a>
-              <a href="/movies" className="header__link btn-link">Фильмы</a>
-              <a href="/saved-movies" className="header__link btn-link header__link_active">Сохранённые фильмы</a>
-            </nav>
+      <Route path="/saved-movies" element={
+        <div className="header">
+          <nav className="header__nav-wrapper">
+            <a href="/" className="header__logo-link">
+              <img className="header__logo" src={logo} alt="Logo" />
+            </a>
+            <a href="/movies" className="header__link btn-link">Фильмы</a>
+            <a href="/saved-movies" className="header__link btn-link header__link_active">Сохранённые фильмы</a>
+          </nav>
 
-            <div className="header__auth-wrapper">
-              <button onClick={() => navigate('/profile')} className="header__account-text-btn btn-link">Аккаунт</button>
-              <button onClick={() => navigate('/profile')} className="header__account-btn btn-white" />
-            </div>
-          </>
-        } />
+          <div onClick={() => navigate('/profile')} className="auth-btn btn-link">
+            <p className="auth-btn__text">Аккаунт</p>
+            <img src={authIcon} className="auth-btn__icon" alt="Auth" />
+          </div>
+          {isActive && <Menu />}
+          <button onClick={() => setState(!isActive)} 
+            className={`${isActive
+            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
+            : "header__auth-menu-btn btn-link"}`} />
+        </div>
 
-        <Route path="/profile" element={
-          <>
-            <nav className="header__nav-wrapper">
-              <a href="/" className="header__logo-link">
-                <img className="header__logo" src={logo} alt="Logo" />
-              </a>
-              <a href="/movies" className="header__link btn-link">Фильмы</a>
-              <a href="/saved-movies" className="header__link btn-link">Сохранённые фильмы</a>
-            </nav>
+      } />
 
-            <div className="header__auth-wrapper">
-              <button onClick={() => navigate('/profile')} className="header__account-text-btn btn-link">Аккаунт</button>
-              <button onClick={() => navigate('/profile')} className="header__account-btn btn-white" />
-            </div>
-          </>
-        } />
-      </Routes>
+      <Route path="/profile" element={
+        <div className="header">
+          <nav className="header__nav-wrapper">
+            <a href="/" className="header__logo-link">
+              <img className="header__logo" src={logo} alt="Logo" />
+            </a>
+            <a href="/movies" className="header__link btn-link">Фильмы</a>
+            <a href="/saved-movies" className="header__link btn-link">Сохранённые фильмы</a>
+          </nav>
 
-    </div>
+          <div onClick={() => navigate('/profile')} className="auth-btn btn-link">
+            <p className="auth-btn__text">Аккаунт</p>
+            <img src={authIcon} className="auth-btn__icon" alt="Auth" />
+          </div>
+          {isActive && <Menu />}
+          <button onClick={() => setState(!isActive)} 
+            className={`${isActive
+            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
+            : "header__auth-menu-btn btn-link"}`} />
+        </div>
+      } />
+
+    </Routes>
   );
 }
 

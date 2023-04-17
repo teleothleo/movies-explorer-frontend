@@ -1,5 +1,5 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Preloader from "../Preloader/Preloader";
+import LoadCardList from "../LoadCardList/LoadCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
 
@@ -8,7 +8,7 @@ const Movies = () => {
     <div className="movies">
       <SearchForm />
       <MoviesCardList />
-      <Preloader />
+      <LoadCardList />
     </div>
   );
 }

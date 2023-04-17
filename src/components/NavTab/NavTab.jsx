@@ -2,10 +2,10 @@
 
 const NavTab = () => {
   return (
-    <div className="navtab">
-     <button className="navtab__btn btn-gray">О проекте</button> 
-     <button className="navtab__btn btn-gray">Технологии</button> 
-     <button className="navtab__btn btn-gray">Студент</button> 
+    <div className="nav-tab">
+     <button className="nav-tab__btn btn-gray">О проекте</button> 
+     <button className="nav-tab__btn btn-gray">Технологии</button> 
+     <button className="nav-tab__btn btn-gray">Студент</button> 
     </div>
   );
 }

@@ -5,7 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 const MoviesCardList = () => {
   const location = useLocation();
   return (
-    <div className="moviesCardList">
+    <div className="movies-card-list">
       <MoviesCard />
       <MoviesCard />
       <MoviesCard />
@@ -16,10 +16,10 @@ const MoviesCardList = () => {
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
+{/*           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
+          <MoviesCard /> */}
         </>
       )}
     </div>

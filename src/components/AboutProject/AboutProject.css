@@ -1,21 +1,18 @@
-.aboutProject {
+.about-project {
   margin: 110px 70px 0 70px;
 }
 
-.aboutProject__wrapper-caption {
+.about-project__wrapper-caption {
   margin-top: 70px;
   display: flex;
 }
 
-.aboutProject__article {
+.about-project__article {
   flex-grow: 1;
 }
 
-.aboutProject__article:first-child {
-  margin-right: 50px;
-}
 
-.aboutProject__article-heading {
+.about-project__article-heading {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -24,7 +21,7 @@
 
 }
 
-.aboutProject__article-caption {
+.about-project__article-caption {
   margin-top: 26px;
   font-weight: 400;
   font-size: 14px;
@@ -68,4 +65,35 @@
   font-size: 14px;
   line-height: 17px;
   color: #A0A0A0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 90px 50px 0 50px;
+  }
+
+  .about-project__article-caption {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+  }
+
+  .about-project__article:first-child {
+    margin-right: 40px;
+  }
+
+  .progress-bar {
+    display: flex;
+    margin: 94px 0;
+  }
+
+  .progress-bar__fraction {
+    flex-grow: 1.2;
+  }
+
+  .progress-bar__fraction_backend {
+    flex-grow: 0.2;
+  }
+
 }

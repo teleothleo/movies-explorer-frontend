@@ -11,7 +11,7 @@ import BadWay from "../BadWay/BadWay";
 
 function App() {
   return (
-    <div className="app">
+    <body className="app">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -25,7 +25,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+    </body>
   );
 }
 

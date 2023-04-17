@@ -111,3 +111,22 @@
   color: black;
 
 }
+
+@media screen and (max-width: 768px) {
+  .login {
+    justify-content: normal;
+  }
+
+  .login__logo-link {
+    margin-top: 232px;
+  }
+
+  .login__submit-btn {
+    margin-top: 221px;
+  }
+
+  .login__signin-wrapper {
+    margin-bottom: 0;
+  }
+
+}

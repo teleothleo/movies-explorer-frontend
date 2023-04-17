@@ -1,15 +1,15 @@
 
-import dummy from "../../images/moviesCard-dummy0.png";
+import dummy from "../../images/movies-card-dummy0.png";
 
 const MoviesCard= () => {
   return (
-    <div className="moviesCard">
-      <img src={dummy} className="moviesCard__image" alt="Movie screenshot"/>
-      <div className="moviesCard__title-wrapper">
-        <h2 className="moviesCard__title">33 слова о дизайндизайнедизайнедизайнедизайндизайнедизайнедизайнеее</h2>
-        <button className="moviesCard__heart" />
+    <div className="movies-card">
+      <img src={dummy} className="movies-card__image" alt="Movie screenshot"/>
+      <div className="movies-card__title-wrapper">
+        <h2 className="movies-card__title">33 слова о дизайндизайнедизайнедизайнедизайндизайнедизайнедизайнеее</h2>
+        <button className="movies-card__heart" />
       </div>
-      <p className="moviesCard__duration">1ч 56м</p>
+      <p className="movies-card__duration">1ч 56м</p>
     </div>
   );
 }

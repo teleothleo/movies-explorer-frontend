@@ -1,4 +1,4 @@
-.badWay {
+.bad-way {
   height: calc(100vh - 18px);
   display: relative;
   display: flex;
@@ -6,28 +6,44 @@
   align-items: center;
 }
 
-.badWay__error-wrapper {
+.bad-way__error-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.badWay__fourOfour {
+.bad-way__fourOfour {
   font-size: 140px;
   line-height: 169px;
   font-weight: 400;
 }
 
-.badWay__caption {
+.bad-way__caption {
   margin-top: 5px;
   font-size: 16px;
   line-height: 19px;
 }
 
-.badWay__return-link {
+.bad-way__return-link {
   bottom: 60px;
   position: absolute;
   color: black;
   font-size: 14px;
   line-height: 17px;
 }
+
+@media screen and (max-width: 768px) {
+  .bad-way__return-link {
+    bottom: 222px;
+  }
+
+}
+
+
+@media screen and (max-height: 868px) {
+  .bad-way__return-link {
+    bottom: 122px;
+  }
+
+}
+

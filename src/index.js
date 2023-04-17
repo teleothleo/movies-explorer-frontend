@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from "./components/App/App";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { MenuContextProvider } from "./utils/MenuContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <MenuContextProvider>
+      <App />
+    </MenuContextProvider>
   </React.StrictMode>
 );
 

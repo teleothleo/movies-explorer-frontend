@@ -1,0 +1,70 @@
+@media screen and (max-width: 768px) {
+
+  .auth-btn_menu {
+    display: block;
+    display: flex;
+    align-items: center;
+    margin-bottom: 92px;
+  }
+
+  .menu {
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .menu-cover {
+    flex-grow: 1;
+    background-color: hsla(0, 0%, 0%, 0.3);
+  }
+
+  .menu-bar {
+    background-color: white;
+    width: 520px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.2s ease-out;
+  }
+
+  .menu__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__btn {
+    margin-top: 22px;
+    background-color: white;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .menu__btn:hover {
+    border-bottom: 2px solid black;
+  }
+
+  .menu__btn_active {
+    border-bottom: 2px solid black;
+    cursor:auto;
+
+  }
+
+  .menu__btn:first-child {
+    margin-top: 159px;
+  }
+
+}

@@ -1,15 +1,38 @@
 .promo {
   margin: 38px 40px 0 40px;
+  height: 493px;
   background-color: #F5F5F5;
   border-radius: 10px;
-  padding-top: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .promo__heading {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 160px auto 0 auto;
   letter-spacing: -0.04em;
   font-size: 50px;
   line-height: 58px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    margin: 38px 20px 0 20px;
+    height: 834px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .promo__heading {
+    max-width: 590px;
+    margin: 350px auto 0 auto;
+    letter-spacing: -0.04em;
+    font-size: 40px;
+    line-height: 52px;
+    font-weight: 400;
+  }
+
 }
