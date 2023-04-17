@@ -1,0 +1,7 @@
+
+@media screen and (min-width: 1281px) {
+  .savedMovies {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

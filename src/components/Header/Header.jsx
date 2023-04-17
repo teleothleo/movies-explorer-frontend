@@ -13,9 +13,11 @@ const Header = () => {
 
         <Route path="/" element={
           <>
+            <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
             </a>
+            </nav>
             <div className="header__auth-wrapper">
               <button onClick={() => navigate('/signup')} className="header__signup-btn btn-link">Регистрация</button>
               <button onClick={() => navigate('/signin')} className="header__signin-btn btn-black">Войти</button>
