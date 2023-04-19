@@ -1,6 +1,6 @@
 @media screen and (max-width: 768px) {
 
-  .auth-btn_menu {
+  .menu__auth-btn {
     display: block;
     display: flex;
     align-items: center;
@@ -34,6 +34,7 @@
   }
 
   .menu__btns {
+    margin-top: 139px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,12 +60,35 @@
 
   .menu__btn_active {
     border-bottom: 2px solid black;
-    cursor:auto;
-
   }
 
-  .menu__btn:first-child {
-    margin-top: 159px;
+}
+
+@media screen and (max-width: 520px) {
+
+  .menu-cover {
+    display: none;
+  }
+
+  .menu-bar {
+    width: 100%;
+  }
+
+  .menu__btns {
+    margin-top: 126px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__btn {
+    margin-top: 18px;
+    line-height: 21px;
+    padding-bottom: 6px;
+  }
+
+  .menu__auth-btn {
+    margin-bottom: 48px;
   }
 
 }

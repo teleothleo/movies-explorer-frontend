@@ -1,6 +1,6 @@
 .portfolio {
   margin: 0 70px;
-  padding-bottom: 184px;
+  padding-bottom: 105px;
   display: flex;
   flex-direction: column;
   text-align: start;
@@ -34,14 +34,15 @@
 .portfolio__link-text {
   font-weight: 400;
   font-size: 30px;
-  line-height: 50px;
+  line-height: 49px;
   letter-spacing: -0.04em;
 
 }
 
 .portfolio__link-icon {
-  width: 16px;
-  height: 16px;
+  margin: 5px 5px 0 0;
+  width: 20px;
+  height: 20px;
 }
 
 .portfolio__hr {
@@ -53,11 +54,52 @@
 @media screen and (max-width: 768px) {
   .portfolio {
     margin: 0 50px;
-    padding-bottom: 147px;
   }
 
   .portfolio__link-text {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .portfolio {
+    padding-bottom: 0px;
+  }
+}
+
+
+@media screen and (max-width: 520px) {
+  .portfolio {
+    margin: 0 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+
+  .portfolio__heading {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .portfolio__link {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 27px;
+
+  }
+
+  .portfolio__link-icon {
+    width: 10px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    height: 10px;
   }
 
 }

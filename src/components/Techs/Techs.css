@@ -68,3 +68,31 @@
   }
 
 }
+
+@media screen and (max-width: 520px) {
+  .techs {
+    padding: 80px 18px 70px 18px;
+    background-color: white;
+  }
+
+  .techs__heading {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__caption {
+    margin-top: 24px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__btns-wrapper {
+    margin-top: 45px;
+    max-width: 188px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+}

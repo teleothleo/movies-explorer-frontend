@@ -1,11 +1,11 @@
 .load-card-list {
   width: 100%;
+  margin-top: 60px;
   height: auto;
+  padding-bottom: 80px;
 }
 
 .load-card-list__load-btn {
-  margin-top: 60px;
-  margin-bottom: 159px;
   width: 320px;
   height: 36px;
   border: 1px #E8E8E8 solid;
@@ -17,17 +17,21 @@
   cursor: pointer;
 }
 
-.load-card-list__filler {
-  height: 326px;
-}
 
 @media screen and (max-width: 768px) {
-  .load-card-list__load-btn {
-    margin-top: 80px;
+  .load-card-list {
+    padding-bottom: 10px;
   }
 
-  .load-card-list__filler {
-    height: 249px;
+  .load-card-list__load-btn {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .load-card-list__load-btn {
+    margin-top: 77px;
+    width: 240px;
   }
 
 }

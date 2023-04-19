@@ -15,3 +15,14 @@
   border-bottom: solid black 1px;
   text-align: start;
 }
+
+@media screen and (max-width: 520px) {
+.main__heading {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  padding-bottom: 28px;
+  border-bottom: solid black 1px;
+}
+
+}

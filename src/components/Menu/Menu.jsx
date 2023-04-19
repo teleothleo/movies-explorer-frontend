@@ -32,7 +32,7 @@ function Menu() {
               }`}>Сохранённые фильмы</button>
         </div>
         <div onClick={(e) => { navigate('/profile'); setState(!isActive) }}
-          className="auth-btn_menu btn-link">
+          className="menu__auth-btn btn-link">
           <p className="auth-btn__text">Аккаунт</p>
           <img src={authIcon} className="auth-btn__icon" alt="Auth" />
         </div>

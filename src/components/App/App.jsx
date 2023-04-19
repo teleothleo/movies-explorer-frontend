@@ -11,21 +11,19 @@ import BadWay from "../BadWay/BadWay";
 
 function App() {
   return (
-    <body className="app">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/*" element={<BadWay />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </body>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/*" element={<BadWay />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

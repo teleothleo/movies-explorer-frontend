@@ -39,3 +39,9 @@
   line-height: 18px;
   opacity: 1;
 }
+
+@media screen and (max-width: 520px) {
+  .filter-checkbox__caption {
+    font-size: 11px;
+  }
+}

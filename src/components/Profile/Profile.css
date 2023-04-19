@@ -1,3 +1,5 @@
+/* TODO: redo Profile etc with paddings at the root */
+/* TODO: change margin-bottoms to either margin-tops or padding bottoms */
 .profile {
   display: flex;
   flex-direction: column;
@@ -10,17 +12,16 @@
   font-size: 24px;
   line-height: 29px;
   margin-top: 92px;
-  margin-bottom: 123px;
 }
 
 .profile__form {
-  margin: 0 auto;
+  margin: 108px auto 0 auto;
   max-width: 410px;
   width: 410px;
 }
 
 .profile__input-group {
-  margin: 16px 0;
+  padding: 16px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -57,6 +58,7 @@
 .profile__btns-wrapper {
   display: flex;
   flex-direction: column;
+  padding-bottom: 70px;
 }
 
 .profile__edit-btn {
@@ -75,7 +77,6 @@
   background-color: #fff;
   color: #FF4062;
   border: none;
-  margin-bottom: 70px;
 }
 
 @media screen and (max-width: 768px) {
@@ -83,12 +84,46 @@
     justify-content: normal;
   }
 
+  .profile__form {
+    margin-top: 80px;
+  }
+
   .profile__greeting {
     margin-top: 254px;
-    margin-bottom: 96px;
   }
 
   .profile__btns-wrapper {
-    margin-top: 200px;
+    margin-top: 195px;
   }
+
+  .profile__input-group {
+    padding-top: 18px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .profile {
+    justify-content: space-between;
+    padding: 70px 30px 40px 30px;
+    height: calc(100vh - 56px);
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .profile__greeting {
+    margin-top: 18px;
+  }
+
+
+  .profile__form {
+    margin: 63px auto 0 auto;
+    max-width: unset;
+    width: 100%;
+  }
+
+  .profile__btns-wrapper {
+    margin-top: 0;
+    padding: 0;
+  }
+
 }

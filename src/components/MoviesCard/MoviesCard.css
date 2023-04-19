@@ -8,13 +8,25 @@
   cursor: pointer;
 }
 
-.movies-card__image {}
+.movies-card_saved:hover .movies-card__remove {
+  opacity: 1;
+}
+
+.movies-card__image {
+  max-width: 100%;
+  height: auto;
+}
 
 .movies-card__title-wrapper {
   display: flex;
   justify-content: space-between;
   padding: 9px 16px 0 16px;
   align-items: center;
+}
+
+.movies-card__title-wrapper_saved {
+  padding-top: 16px;
+
 }
 
 .movies-card__title {
@@ -38,10 +50,30 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  transition: 0.2s ease-out;
+  outline: none;
+}
+
+.movies-card__heart:hover {
+  opacity: 0.7;
 }
 
 .movies-card__heart_active {
   background-image: url("../../images/heart-active.svg");
+}
+
+.movies-card__remove {
+  margin-right: 12px;
+  min-width: 7px;
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border: none;
+  background-image: url("../../images/card_remove.svg");
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
 }
 
 .movies-card__duration {
@@ -54,15 +86,22 @@
   color: #A0A0A0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 868px) {
   .movies-card {
+    margin: 0 auto;
     max-width: 339px;
+    box-sizing: border-box;
   }
 
   .movies-card__title-wrapper {
     padding: 7px 21px 0 13px;
     align-items: center;
   }
+
+  .movies-card__title-wrapper_saved {
+    padding-top: 16px;
+  }
+
 
   .movies-card__title {
     font-size: 13px;
@@ -73,5 +112,43 @@
     margin-top: 9px;
     margin-left: 14px;
   }
+
+}
+
+@media screen and (max-width: 520px) {
+
+  .movies-card {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+  }
+
+  .movies-card__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .movies-card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .movies-card__duration {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .movies-card__remove {
+    margin-right: 2px;
+  }
+
+
+  .movies-card__duration_saved {
+    margin-top: 14px;
+  }
+
 
 }

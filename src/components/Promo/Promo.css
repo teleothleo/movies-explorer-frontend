@@ -36,3 +36,23 @@
   }
 
 }
+
+@media screen and (max-width: 520px) {
+  .promo {
+    margin: 32px 14px 0 14px;
+    height: 586px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .promo__heading {
+    max-width: 280px;
+    margin: 220px auto 0 auto;
+    letter-spacing: -0.04em;
+    font-size: 29px;
+    line-height: 37px;
+    font-weight: 400;
+  }
+
+}

@@ -41,11 +41,12 @@ const Header = () => {
             <p className="auth-btn__text">Аккаунт</p>
             <img src={authIcon} className="auth-btn__icon" alt="Auth" />
           </div>
+
           {isActive && <Menu />}
           <button onClick={() => setState(!isActive)} 
             className={`${isActive
-            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
-            : "header__auth-menu-btn btn-link"}`} />
+            ? "header__sandwich-btn header__sandwich-btn_active btn-link"
+            : "header__sandwich-btn btn-link"}`} />
         </div>
       } />
 
@@ -63,11 +64,12 @@ const Header = () => {
             <p className="auth-btn__text">Аккаунт</p>
             <img src={authIcon} className="auth-btn__icon" alt="Auth" />
           </div>
+
           {isActive && <Menu />}
           <button onClick={() => setState(!isActive)} 
             className={`${isActive
-            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
-            : "header__auth-menu-btn btn-link"}`} />
+            ? "header__sandwich-btn header__sandwich-btn_active btn-link"
+            : "header__sandwich-btn btn-link"}`} />
         </div>
 
       } />
@@ -86,11 +88,12 @@ const Header = () => {
             <p className="auth-btn__text">Аккаунт</p>
             <img src={authIcon} className="auth-btn__icon" alt="Auth" />
           </div>
+
           {isActive && <Menu />}
           <button onClick={() => setState(!isActive)} 
             className={`${isActive
-            ? "header__auth-menu-btn header__auth-menu-btn_active btn-link"
-            : "header__auth-menu-btn btn-link"}`} />
+            ? "header__sandwich-btn header__sandwich-btn_active btn-link"
+            : "header__sandwich-btn btn-link"}`} />
         </div>
       } />
 

@@ -9,8 +9,7 @@ const SavedMovies = () => {
     <div className="saved-movies">
       <SearchForm />
       {/* <Preloader /> */}
-      <MoviesCardList />
-      <LoadCardList />
+      <MoviesCardList isSaved={true} />
     </div>
   );
 }

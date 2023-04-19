@@ -1,27 +1,26 @@
-import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 
-const MoviesCardList = () => {
-  const location = useLocation();
+const MoviesCardList = (props) => {
   return (
-    <div className="movies-card-list">
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      {location.pathname === '/movies' && (
-        <>
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-{/*           <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard /> */}
-        </>
-      )}
+    <div className={`${props.isSaved
+      ? "movies-card-list movies-card-list_saved"
+      : "movies-card-list"
+      }`}>
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+      {/* <MoviesCard isSaved={props.isSaved} /> */}
+{/*       <MoviesCard isSaved={props.isSaved} />
+
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+
+ */}      {/*       <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} />
+      <MoviesCard isSaved={props.isSaved} /> */}
     </div>
   );
 }

@@ -32,18 +32,40 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 768px) {
-  .bad-way__return-link {
-    bottom: 222px;
-  }
-
-}
-
-
 @media screen and (max-height: 868px) {
   .bad-way__return-link {
     bottom: 122px;
   }
-
 }
 
+
+@media screen and (max-width: 768px) {
+  .bad-way__return-link {
+    bottom: 222px;
+  }
+}
+
+
+@media screen and (max-width: 520px) {
+
+  .bad-way {
+    height: 100vh;
+  }
+
+  .bad-way__fourOfour {
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .bad-way__caption {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .bad-way__return-link {
+    bottom: 30px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
