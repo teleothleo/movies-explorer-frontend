@@ -7,11 +7,11 @@ import SearchForm from "../SearchForm/SearchForm";
 const Movies = () => {
   const location = useLocation();
   return (
-    <div className="movies">
+    <main className="movies">
       <SearchForm />
       <MoviesCardList isSaved={false} />
       <LoadCardList />
-    </div>
+    </main>
   );
 }
 

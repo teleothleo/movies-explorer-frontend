@@ -14,7 +14,7 @@ const Header = () => {
     <Routes>
 
       <Route path="/" element={
-        <div className="header">
+        <header className="header">
           <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
@@ -24,11 +24,11 @@ const Header = () => {
             <button onClick={() => navigate('/signup')} className="auth__signup-btn btn-link">Регистрация</button>
             <button onClick={() => navigate('/signin')} className="auth__signin-btn btn-black">Войти</button>
           </div>
-        </div>
+        </header>
       } />
 
       <Route path="/movies" element={
-        <div className="header">
+        <header className="header">
           <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
@@ -47,11 +47,11 @@ const Header = () => {
             className={`${isActive
             ? "header__sandwich-btn header__sandwich-btn_active btn-link"
             : "header__sandwich-btn btn-link"}`} />
-        </div>
+        </header>
       } />
 
       <Route path="/saved-movies" element={
-        <div className="header">
+        <header className="header">
           <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
@@ -70,12 +70,12 @@ const Header = () => {
             className={`${isActive
             ? "header__sandwich-btn header__sandwich-btn_active btn-link"
             : "header__sandwich-btn btn-link"}`} />
-        </div>
+        </header>
 
       } />
 
       <Route path="/profile" element={
-        <div className="header">
+        <header className="header">
           <nav className="header__nav-wrapper">
             <a href="/" className="header__logo-link">
               <img className="header__logo" src={logo} alt="Logo" />
@@ -94,7 +94,7 @@ const Header = () => {
             className={`${isActive
             ? "header__sandwich-btn header__sandwich-btn_active btn-link"
             : "header__sandwich-btn btn-link"}`} />
-        </div>
+        </header>
       } />
 
     </Routes>

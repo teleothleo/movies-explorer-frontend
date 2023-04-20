@@ -1,11 +1,5 @@
-@media screen and (min-width: 1281px) {
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
 
-.main__heading {
+.content-heading {
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -17,12 +11,12 @@
 }
 
 @media screen and (max-width: 520px) {
-.main__heading {
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: -0.04em;
-  padding-bottom: 28px;
-  border-bottom: solid black 1px;
-}
+  .content-heading {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+    padding-bottom: 28px;
+    border-bottom: solid black 1px;
+  }
 
 }

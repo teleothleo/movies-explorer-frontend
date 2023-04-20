@@ -1,11 +1,12 @@
 .nav-tab {
   margin: 151px auto 0 auto;
+  width: min-content;
   padding-bottom: 30px;
+  display: flex;
 }
 
 .nav-tab__btn {
   margin: 0 5px;
-  border: 0;
   border-radius: 10px;
   width: 96px;
   height: 36px;
@@ -13,6 +14,10 @@
   font-size: 12px;
   line-height: 16px;
   background-color: #E8E8E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 520px) {

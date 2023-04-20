@@ -27,7 +27,6 @@
   height: 100%;
   background-color: #F9F9F9;
   border: none;
-  outline: none;
 }
 
 .search-form__input::placeholder {
@@ -47,7 +46,6 @@
   background-image: url("../../images/search.svg");
   background-repeat: no-repeat;
   background-position: center;
-  outline: none;
 }
 
 @media screen and (max-width: 1200px) {

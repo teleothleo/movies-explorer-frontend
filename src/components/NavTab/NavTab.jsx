@@ -2,16 +2,24 @@
 
 const NavTab = () => {
   return (
-    <div className="nav-tab">
-      <a href="#about-project">
-        <button className="nav-tab__btn btn-gray">О проекте</button>
-      </a>
-      <a href="#techs">
-        <button className="nav-tab__btn btn-gray">Технологии</button>
-      </a>
-      <a href="#about-me">
-        <button className="nav-tab__btn btn-gray">Студент</button>
-      </a>
+    <div >
+      <ul className="nav-tab">
+        <li>
+          <a className="nav-tab__btn btn-gray" href="#about-project">
+            О проекте
+          </a>
+        </li>
+        <li>
+          <a className="nav-tab__btn btn-gray" href="#techs">
+            Технологии
+          </a>
+        </li>
+        <li>
+          <a className="nav-tab__btn btn-gray" href="#about-me">
+            Студент
+          </a>
+        </li>
+      </ul>
     </div>
   );
 }

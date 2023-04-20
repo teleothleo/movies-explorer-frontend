@@ -42,14 +42,13 @@
   width: min-content;
   text-align: end;
   flex-grow: 1;
-  outline: none;
 }
 
 .profile__input::placeholder {
   color: black;
 }
 
-.profile_hr {
+.profile__hr {
   height: 1px;
   width: 100%;
   background-color: #E8E8E8;

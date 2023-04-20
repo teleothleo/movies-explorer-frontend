@@ -1,9 +1,6 @@
 .filter-checkbox {
   display: flex;
   cursor: pointer;
-  border: none;
-  background-color: white;
-  outline: none;
 }
 
 .filter-checkbox__tumbler {

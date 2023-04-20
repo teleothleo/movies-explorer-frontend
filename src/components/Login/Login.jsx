@@ -3,7 +3,7 @@ import logo from "../../images/logo.svg"
 
 const Login = () => {
   return (
-    <div className="login">
+    <main className="login">
       <div>
         <a href="/" className="login__logo-link">
           <img className="login__logo" src={logo} alt="Logo" />
@@ -25,7 +25,7 @@ const Login = () => {
           <a className="login__signup-link btn-link" href="/signup">Регистрация</a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

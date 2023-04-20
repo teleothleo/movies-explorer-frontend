@@ -3,24 +3,29 @@ import arrow from "../../images/link_arrow.svg"
 
 function Portfolio() {
   return (
-    <div className="portfolio">
+    <section className="portfolio">
       <h2 className="portfolio__heading">Портфолио</h2>
-      <button className="portfolio__link">
-        <p className="portfolio__link-text">Статичный сайт</p>
-        <img src={arrow} className="portfolio__link-icon" alt="Link arrow"/>
-      </button>
-      <div className="portfolio__hr" />
-      <button className="portfolio__link">
-        <p className="portfolio__link-text">Адаптивный сайт</p>
-        <img src={arrow} className="portfolio__link-icon" alt="Link arrow"/>
-      </button>
-      <div className="portfolio__hr" />
-      <button className="portfolio__link">
-        <p className="portfolio__link-text">Одностраничное приложение</p>
-        <img src={arrow} className="portfolio__link-icon" alt="Link arrow"/>
-      </button>
-
-    </div>
+      <ul>
+        <li>
+          <a className="portfolio__link" href="https://github.com/teleothleo/how-to-learn" >
+            Статичный сайт
+            <img src={arrow} className="portfolio__link-icon" alt="Link arrow" />
+          </a>
+        </li>
+        <li>
+          <a className="portfolio__link" href="https://github.com/teleothleo/russian-travel" >
+            Адаптивный сайт
+            <img src={arrow} className="portfolio__link-icon" alt="Link arrow" />
+          </a>
+        </li>
+        <li>
+          <a className="portfolio__link portfolio__last-link" href="https://github.com/teleothleo/react-mesto-api-full-gha" >
+            Одностраничное приложение
+            <img src={arrow} className="portfolio__link-icon" alt="Link arrow" />
+          </a>
+        </li>
+      </ul>
+    </section>
   );
 }
 

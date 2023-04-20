@@ -3,8 +3,8 @@ import pic from "../../images/profpic.jpg"
 
 function AboutMe() {
   return (
-    <div className="about-me">
-      <h2 id="about-me" className="main__heading">Студент</h2>
+    <section className="about-me">
+      <h2 id="about-me" className="content-heading">Студент</h2>
 
       <div className="about-me__wrapper">
         <div className="about-me__text-wrapper">
@@ -18,7 +18,7 @@ function AboutMe() {
         <img className="about-me__image" alt="Student" src={pic} />
       </div>
 
-    </div>
+    </section>
   );
 }
 

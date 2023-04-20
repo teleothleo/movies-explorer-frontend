@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.footer_c-year {
+.footer__c-year {
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -94,7 +94,7 @@
     margin-bottom: 12px;
   }
 
-  .footer_c-year {
+  .footer__c-year {
     margin-top: 30px;
     font-size: 12px;
     line-height: 15px;

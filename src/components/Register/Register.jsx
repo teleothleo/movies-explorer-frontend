@@ -2,7 +2,7 @@ import logo from "../../images/logo.svg"
 
 const Register = () => {
   return (
-    <div className="register">
+    <main className="register">
       <div>
         <a href="/" className="register__logo-link">
           <img className="register__logo" src={logo} alt="Logo" />
@@ -27,7 +27,7 @@ const Register = () => {
           <a className="register__signin-link btn-link" href="/signin">Войти</a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
