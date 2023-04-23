@@ -1,28 +1,22 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 
-const MoviesCardList = (props) => {
-  return (
-    <section className={`${props.isSaved
-      ? "movies-card-list movies-card-list_saved"
-      : "movies-card-list"
-      }`}>
-        <MoviesCard isSaved={props.isSaved} />
-        <MoviesCard isSaved={props.isSaved} />
-        {/* <MoviesCard isSaved={props.isSaved} /> */}
-        {/*       <MoviesCard isSaved={props.isSaved} />
+const MoviesCardList = ({ isSaved, cardsData }) => (
+  <section className={`${isSaved
+    ? "movies-card-list movies-card-list_saved"
+    : "movies-card-list"}`}>
+    {cardsData && cardsData.map((cardData) =>
+       <MoviesCard
+        isSaved={isSaved}
+        key={cardData.id}
+        duration={cardData.duration}
+        image={cardData.image.url}
+        nameEN={cardData.nameEN}
+        nameRU={cardData.nameRU}
+        year={cardData.year} /> 
+    )}
 
-      <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} />
-
- */}      {/*       <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} />
-      <MoviesCard isSaved={props.isSaved} /> */}
-    </section>
-  );
-}
+  </section>
+)
 
 export default MoviesCardList;

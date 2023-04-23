@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 57px);
 }
 
 .profile__greeting {
@@ -104,7 +103,6 @@
   .profile {
     justify-content: space-between;
     padding: 70px 30px 40px 30px;
-    height: calc(100vh - 56px);
     max-height: 100vh;
     box-sizing: border-box;
   }

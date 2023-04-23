@@ -1,6 +1,6 @@
 .login {
   height: 100vh;
-  max-width: 396px;
+  width: 396px;
   margin: 0 auto;
   text-align: start;
   display: flex;

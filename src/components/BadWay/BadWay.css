@@ -1,5 +1,5 @@
 .bad-way {
-  height: calc(100vh - 18px);
+  height: 100vh;
   display: relative;
   display: flex;
   justify-content: center;
