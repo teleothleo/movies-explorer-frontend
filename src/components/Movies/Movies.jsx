@@ -3,38 +3,64 @@ import LoadCardList from "../LoadCardList/LoadCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { useCallback, useEffect, useState } from "react";
 import MoviesApi from "../../utils/MoviesApi";
+import Preloader from "../Preloader/Preloader";
+import { ErrBadFetch, ErrNotFound } from "../../utils/constants";
 
 const Movies = () => {
 
   const [movies, setMovies] = useState(null);
   const [searchRes, setSearchRes] = useState(null);
+  const [showPreloader, setShowPreloader] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [initialCardsQuantity, setInitialCardsQuantity] = useState(12);
+  const [howManyCardsToLoadOnClick, setHowManyCardsToLoadOnClick] = useState(3);
+
 
   const fetchMovies = useCallback(async () => {
-    const moviesApi = new MoviesApi();
-    const newMovies = await moviesApi.fetchMovies();
-    setMovies(newMovies);
-    storeBeatFilmDb(newMovies);
+    try {
+      setShowError(false);
+      const moviesApi = new MoviesApi();
+      setShowPreloader(true);
+      const newMovies = await moviesApi.fetchMovies();
+      newMovies && setShowPreloader(false);
+      setMovies(newMovies);
+      storeBeatFilmDb(newMovies);
+    } catch (error) {
+      console.error(error);
+      setShowError(true);
+    }
   }, [])
 
   const findMovies = (movies, queryRef) => {
-    if (movies) {
+    try {
+      setShowError(false);
+      if (movies) {
 
-      const newSearchRes = movies.filter((item) => (
-        item.nameRU.toLowerCase()
-          .includes(queryRef.current.value.toLowerCase())
-        || item.nameEN.toLowerCase()
-          .includes(queryRef.current.value.toLowerCase())
-      ));
+        setShowPreloader(true);
+        const newSearchRes = movies.filter((item) => (
+          item.nameRU.toLowerCase()
+            .includes(queryRef.current.value.toLowerCase())
+          || item.nameEN.toLowerCase()
+            .includes(queryRef.current.value.toLowerCase())
+        ));
 
-      storeSearchRes(newSearchRes);
-      setSearchRes(newSearchRes);
+        setTimeout(() => {
+          console.log("Fake loading");
+          storeSearchRes(newSearchRes);
+          setSearchRes(newSearchRes);
+          setShowPreloader(false);
+        }, "1000");
 
-      console.log(
-        "Query: ", queryRef.current.value,
-        "\nRes: ", newSearchRes,
-        // "\nMoviesDB: ", movies
-      )
+        console.log(
+          "Query: ", queryRef.current.value,
+          "\nRes: ", newSearchRes,
+          // "\nMoviesDB: ", movies
+        )
+      }
 
+    } catch (error) {
+      console.error(error);
+      setShowError(true);
     }
   }
 
@@ -66,11 +92,64 @@ const Movies = () => {
     }
   }, [fetchMovies, movies, searchRes]);
 
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth > 768) {
+      setInitialCardsQuantity(12);
+      setHowManyCardsToLoadOnClick(3);
+      console.log(12, windowWidth);
+    } else if (windowWidth <= 768 && windowWidth > 480) {
+      setInitialCardsQuantity(8);
+      setHowManyCardsToLoadOnClick(2);
+      console.log(8, windowWidth);
+    } else if (windowWidth <= 480) {
+      setInitialCardsQuantity(5);
+      setHowManyCardsToLoadOnClick(2);
+      console.log(5, windowWidth);
+    } else {
+      setInitialCardsQuantity(12);
+      setHowManyCardsToLoadOnClick(3);
+      console.log(1212, windowWidth);
+    }
+  }, []);
+
+
   return (
     <main className="movies">
-      { movies && <SearchForm movies={movies} onSearchClick={findMovies} />}
-      { searchRes && <MoviesCardList isSaved={false} cardsData={searchRes} />}
-      { searchRes && <LoadCardList /> }
+
+      {movies && <SearchForm movies={movies} onSearchClick={findMovies} />}
+
+      {searchRes
+        && searchRes.length === 0
+        && !showPreloader
+        && <p className="movies__err-msg">{ErrNotFound}</p>}
+
+      {showError
+        && !showPreloader
+        && <p className="movies__err-msg">{ErrBadFetch}</p>}
+
+      {showPreloader && <Preloader />}
+
+      {searchRes
+        && !showError
+        && searchRes.length <= 3
+        && <MoviesCardList
+          showLoadCardList={false}
+          howManyCardsToLoadOnClick={howManyCardsToLoadOnClick}
+          initialCardsQuantity={initialCardsQuantity}
+          isSaved={false}
+          cardsData={searchRes} />}
+
+      {searchRes
+        && !showError
+        && searchRes.length >= initialCardsQuantity
+        && <MoviesCardList
+          showLoadCardList={true}
+          howManyCardsToLoadOnClick={howManyCardsToLoadOnClick}
+          initialCardsQuantity={initialCardsQuantity}
+          isSaved={false}
+          cardsData={searchRes} />}
+
     </main>
   );
 }

@@ -1,9 +1,9 @@
 
-const LoadCardList = () => {
+const LoadCardList = ({ onLoadMore }) => {
 
   return (
     <section className="load-card-list">
-      <button className="load-card-list__load-btn btn-border">Ещё</button>
+      <button onClick={onLoadMore} className="load-card-list__load-btn btn-border">Ещё</button>
     </section>
   );
 }
