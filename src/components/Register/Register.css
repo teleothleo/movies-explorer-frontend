@@ -1,0 +1,191 @@
+.register {
+  height: 100vh;
+  max-width: 396px;
+  margin: 0 auto;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.register__logo-link {
+  margin-top: 70px;
+  margin-bottom: 40px;
+  display: block;
+  height: 38px;
+  max-height: 38px;
+  width: 38px;
+  max-width: 38px;
+  margin-right: 44px;
+  cursor: pointer;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.register__greeting {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.register__form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__label {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+  margin-bottom: 5px;
+
+  margin-top: 24px;
+}
+
+.register__input {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E8E8E8;
+  transition: 0.3s ease-out;
+}
+
+.register__input:focus {
+  border-bottom: 1px solid #000;
+}
+
+.register__error-span {
+  display: none;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 6px;
+
+  color: #FF4062;
+}
+
+.register__error-span_active {
+  display: block;
+}
+
+.register__submit-btn {
+  height: 45px;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #000;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.register__signin-wrapper {
+
+  margin-top: 16px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.register__signin-question {
+  margin-right: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+}
+
+.register__signin-link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: white;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    justify-content: normal;
+  }
+
+  .register__logo-link {
+    margin-top: 232px;
+  }
+
+  .register__submit-btn {
+    margin-top: 134px;
+  }
+
+  .register__signin-wrapper {
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+@media screen and (max-width: 520px) {
+  .register {
+    max-width: 100%;
+    justify-content: space-between;
+    padding: 56px 30px 30px 30px;
+    height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .register__logo-link {
+    margin: 0 auto;
+    display: block;
+    height: 38px;
+    max-height: 38px;
+    width: 38px;
+    max-width: 38px;
+    cursor: pointer;
+  }
+
+  .register__greeting {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .register__form {
+    margin: 56px auto 0 auto;
+    max-width: unset;
+    width: 100%;
+  }
+
+  .register__submit-btn {
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 15zxpx;
+
+  }
+
+  .register__btns-wrapper {
+    margin: 14px 0 0 0;
+    padding: 0;
+  }
+
+
+  .register__signin-question {
+    font-size: 12px;
+    line-height: 15px;
+    color: #A0A0A0;
+  }
+
+  .register__signin-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

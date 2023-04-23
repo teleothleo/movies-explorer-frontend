@@ -1,0 +1,155 @@
+.about-project {
+  margin: 110px 70px 0 70px;
+}
+
+.about-project__wrapper-caption {
+  margin-top: 70px;
+  display: flex;
+}
+
+.about-project__article {
+  flex-grow: 1;
+}
+
+.about-project__article:first-child {
+  margin-right: 50px;
+}
+
+
+.about-project__article-heading {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  text-align: start;
+
+}
+
+.about-project__article-caption {
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: start;
+  line-height: 20px;
+}
+
+.progress-bar {
+  display: flex;
+  margin: 110px 0;
+}
+
+.progress-bar__fraction {
+  flex-grow: 1.05;
+}
+
+.progress-bar__fraction_backend {
+  flex-grow: 0.2;
+}
+
+.progress-bar__fraction-fill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F2F2;
+  height: 36px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.progress-bar__fraction-fill_backend {
+  background-color: #000;
+  color: white;
+}
+
+.progress-bar__backend-caption {
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    margin: 90px 50px 0 50px;
+  }
+
+  .about-project__article-caption {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+  }
+
+  .about-project__article:first-child {
+    margin-right: 40px;
+  }
+
+  .progress-bar {
+    display: flex;
+    margin: 94px 0;
+  }
+
+  .progress-bar__fraction {
+    flex-grow: 1.2;
+  }
+
+  .progress-bar__fraction_backend {
+    flex-grow: 0.2;
+  }
+
+}
+
+@media screen and (max-width: 520px) {
+  .about-project {
+    margin: 70px 18px 0 18px;
+  }
+
+  .about-project__article-heading {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__article-caption {
+    margin-top: 16px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__wrapper-caption {
+    margin-top: 60px;
+    flex-direction: column;
+  }
+
+  .about-project__article:first-child {
+    margin-bottom: 56px;
+    margin-right: 0;
+  }
+
+  .progress-bar {
+    display: flex;
+    margin: 60px 0;
+  }
+
+  .progress-bar__fraction {
+    flex-grow: 1.0;
+  }
+
+  .progress-bar__fraction_backend {
+    flex-grow: 0.38;
+  }
+
+  .progress-bar__fraction-fill {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .progress-bar__backend-caption {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+}

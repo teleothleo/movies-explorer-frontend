@@ -1,0 +1,112 @@
+@import url(./vendor/normalize.css);
+
+@import url(./components/AboutMe/AboutMe.css);
+@import url(./components/AboutProject/AboutProject.css);
+@import url(./components/App/App.css);
+@import url(./components/BadWay/BadWay.css);
+@import url(./components/FilterCheckbox/FilterCheckbox.css);
+@import url(./components/Footer/Footer.css);
+@import url(./components/Header/Header.css);
+@import url(./components/Login/Login.css);
+@import url(./components/Main/Main.css);
+@import url(./components/Menu/Menu.css);
+@import url(./components/Movies/Movies.css);
+@import url(./components/MoviesCard/MoviesCard.css);
+@import url(./components/MoviesCardList/MoviesCardList.css);
+@import url(./components/NavTab/NavTab.css);
+@import url(./components/Portfolio/Portfolio.css);
+@import url(./components/LoadCardList/LoadCardList.css);
+@import url(./components/Profile/Profile.css);
+@import url(./components/Promo/Promo.css);
+@import url(./components/Register/Register.css);
+@import url(./components/SavedMovies/SavedMovies.css);
+@import url(./components/SearchForm/SearchForm.css);
+@import url(./components/Techs/Techs.css);
+/* @import url(./components/); */
+
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url(./vendor/fonts/Inter-Regular.woff),
+    url(./vendor/fonts/Inter-Regular.woff2)
+}
+
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url(./vendor/fonts/Inter-Medium.woff),
+    url(./vendor/fonts/Inter-Medium.woff2)
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+div,
+button,
+input {
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-link {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  opacity: 0.7;
+}
+
+.btn-black {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+}
+
+.btn-black:hover {
+  background-color: hsla(0, 0%, 0%, 0.8)
+}
+
+.btn-gray {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+}
+
+.btn-gray:hover {
+  background-color: hsla(0, 0%, 91%, 0.8)
+}
+
+.btn-white {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+}
+
+.btn-white:hover {
+  background-color: hsla(0, 0%, 98%, 0.7);
+}
+
+.btn-border {
+  transition: 0.1s ease-out;
+  cursor: pointer;
+}
+
+.btn-border:hover {
+  border-color: hsla(0, 0%, 91%, 0.7)
+}
