@@ -1,5 +1,4 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import LoadCardList from "../LoadCardList/LoadCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { useCallback, useEffect, useState } from "react";
 import MoviesApi from "../../utils/MoviesApi";
@@ -112,7 +111,6 @@ const Movies = () => {
       console.log(1212, windowWidth);
     }
   }, []);
-
 
   return (
     <main className="movies">

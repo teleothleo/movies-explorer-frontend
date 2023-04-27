@@ -10,11 +10,21 @@ const MoviesCardList = ({
 
   const [currentCardsQuanitty, setCurrentCardsQuanitty] = useState(initialCardsQuantity);
   const [currentCardsData, setCurrentCardsData] = useState(null);
+  const [loadMoreDisabled, setLoadMoreDisabled] = useState(false);
 
   const loadMore = () => {
     console.log(howManyCardsToLoadOnClick + currentCardsQuanitty)
     setCurrentCardsQuanitty(howManyCardsToLoadOnClick + currentCardsQuanitty);
   }
+
+  useEffect(() => {
+    if (cardsData) {
+      console.log(currentCardsQuanitty, " ", cardsData.length)
+      if (currentCardsQuanitty >= cardsData.length) {
+        setLoadMoreDisabled(true);
+      }
+    }
+  }, [cardsData, currentCardsQuanitty])
 
   // Resetting currentCardsQuanitty if new search was made
   useEffect(() => {
@@ -53,6 +63,7 @@ const MoviesCardList = ({
       </section>
 
       {showLoadCardList
+        && !loadMoreDisabled
         && <LoadCardList onLoadMore={loadMore} />}
     </>
   )

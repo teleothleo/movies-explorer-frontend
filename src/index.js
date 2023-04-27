@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import App from "./components/App/App";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { MenuContextProvider } from "./utils/MenuContext";
+import { MenuProvider } from "./utils/MenuContext";
+import { UserProvider } from "./utils/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <MenuContextProvider>
-    <App />
-  </MenuContextProvider>
+  <MenuProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </MenuProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

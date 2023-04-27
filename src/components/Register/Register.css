@@ -55,25 +55,40 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #E8E8E8;
   transition: 0.3s ease-out;
+  outline: none;
 }
 
 .register__input:focus {
   border-bottom: 1px solid #000;
 }
 
-.register__error-span {
+.register__error-input {
   display: none;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   margin-top: 6px;
-
   color: #FF4062;
 }
 
-.register__error-span_active {
+.register__error-input_active {
   display: block;
 }
+
+.register__error {
+  display: none;
+  font-weight: 400;
+  text-align: center;
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 20px;
+  color: #FF4062;
+}
+
+.register__error_active {
+  display: block;
+}
+
 
 .register__submit-btn {
   height: 45px;
@@ -85,6 +100,12 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  cursor: pointer;
+}
+
+.register__submit-btn_disabled {
+  cursor: auto;
+  opacity: 0.25;
 }
 
 .register__signin-wrapper {
