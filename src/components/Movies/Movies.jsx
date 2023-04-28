@@ -14,7 +14,6 @@ const Movies = () => {
   const [initialCardsQuantity, setInitialCardsQuantity] = useState(12);
   const [howManyCardsToLoadOnClick, setHowManyCardsToLoadOnClick] = useState(3);
 
-
   const fetchMovies = useCallback(async () => {
     try {
       setShowError(false);
@@ -81,48 +80,51 @@ const Movies = () => {
 
   useEffect(() => {
     if (!movies && localStorage.getItem("beatFilmDb")) {
-      loadStoredBeatFilmDb();
+      loadStoredBeatFilmDb(); // Load BeatFilmDb from LS if none exists in Comp.
     }
     if (!movies && !localStorage.getItem("beatFilmDb")) {
-      fetchMovies();
-    }
-    if (!searchRes && localStorage.getItem("searchRes")) {
-      loadStoredSearchRes();
+      fetchMovies(); // Fetch and Store BeatFilmDb from BeatFilmDb if none exists in LS.
+    } else if (!searchRes && localStorage.getItem("searchRes")) {
+      loadStoredSearchRes(); // Load LS Search results if such exist
     }
   }, [fetchMovies, movies, searchRes]);
 
-  useEffect(() => {
+  useEffect(() => { // Calculating windows width & handling amount of cards to load
     const windowWidth = window.innerWidth;
     if (windowWidth > 768) {
       setInitialCardsQuantity(12);
       setHowManyCardsToLoadOnClick(3);
-      console.log(12, windowWidth);
+      console.log(`InitialCardsQuantity: 12,
+        width res: ${windowWidth}px`);
     } else if (windowWidth <= 768 && windowWidth > 480) {
       setInitialCardsQuantity(8);
       setHowManyCardsToLoadOnClick(2);
-      console.log(8, windowWidth);
+      console.log(`InitialCardsQuantity: 8,
+        width res: ${windowWidth}px`);
     } else if (windowWidth <= 480) {
       setInitialCardsQuantity(5);
       setHowManyCardsToLoadOnClick(2);
-      console.log(5, windowWidth);
+      console.log(`InitialCardsQuantity: 5,
+        width res: ${windowWidth}px`);
     } else {
       setInitialCardsQuantity(12);
       setHowManyCardsToLoadOnClick(3);
-      console.log(1212, windowWidth);
+      console.log(`InitialCardsQuantity: 12,
+        width res: what res??: ${windowWidth}px`);
     }
   }, []);
 
   return (
     <main className="movies">
 
-      {movies && <SearchForm movies={movies} onSearchClick={findMovies} />}
+      {movies && <SearchForm movies={movies} onSearchClick={findMovies} isSaved={false} />}
 
-      {searchRes
+      {searchRes // Error: no movies found
         && searchRes.length === 0
         && !showPreloader
         && <p className="movies__err-msg">{ErrNotFound}</p>}
 
-      {showError
+      {showError // Error: fetching failed
         && !showPreloader
         && <p className="movies__err-msg">{ErrBadFetch}</p>}
 
@@ -130,22 +132,20 @@ const Movies = () => {
 
       {searchRes
         && !showError
-        && searchRes.length <= 3
+        && searchRes.length <= initialCardsQuantity
         && <MoviesCardList
-          showLoadCardList={false}
+          showLoadCardList={false} // The card quantity is small
           howManyCardsToLoadOnClick={howManyCardsToLoadOnClick}
           initialCardsQuantity={initialCardsQuantity}
-          isSaved={false}
           cardsData={searchRes} />}
 
       {searchRes
         && !showError
         && searchRes.length >= initialCardsQuantity
         && <MoviesCardList
-          showLoadCardList={true}
+          showLoadCardList={true} // The card quantity is big, loader button is needed
           howManyCardsToLoadOnClick={howManyCardsToLoadOnClick}
           initialCardsQuantity={initialCardsQuantity}
-          isSaved={false}
           cardsData={searchRes} />}
 
     </main>

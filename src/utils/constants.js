@@ -1,5 +1,5 @@
 export const BFAPI_URL = "https://api.nomoreparties.co/beatfilm-movies";
-export const BF_URL = "https://api.nomoreparties.co/";
+export const BF_URL = "https://api.nomoreparties.co";
 //export const API_URL = "https://api.lacatastrophe.nomoredomains.monster"
 export const API_URL = "http://localhost:3000"
 export const WarnNoInput = "Нужно ввести ключевое слово";

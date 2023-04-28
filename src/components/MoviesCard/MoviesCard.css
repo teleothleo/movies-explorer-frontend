@@ -66,13 +66,15 @@
 }
 
 .movies-card__remove {
-  margin-right: 12px;
   min-width: 7px;
   width: 7px;
   height: 7px;
+  padding: 10px;
   background-color: white;
   border: none;
   background-image: url("../../images/card_remove.svg");
+  background-repeat: no-repeat;
+  background-position: center;
   transition: 0.2s ease-out;
   cursor: pointer;
   opacity: 0;

@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { WarnNoInput } from "../../utils/constants";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-const SearchForm = ({ onSearchClick, movies }) => {
+const SearchForm = ({ onSearchClick, movies, isSaved }) => {
 
   const queryRef = useRef("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    storeSearchPrompt(queryRef.current.value);
-    onSearchClick(movies, queryRef);
+    !isSaved && storeSearchPrompt(queryRef.current.value);
+    isSaved 
+      ? onSearchClick(queryRef)
+      : onSearchClick(movies, queryRef)
   }
 
   const storeSearchPrompt = (searchPrompt) => {
@@ -22,8 +24,10 @@ const SearchForm = ({ onSearchClick, movies }) => {
   }
 
   useEffect(() => {
+    if (!isSaved) {
     loadSearchPrompt();
-  }, [])
+    }
+  }, [isSaved])
 
   return (
     <section className="search-form">
