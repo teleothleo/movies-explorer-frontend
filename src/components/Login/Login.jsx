@@ -2,14 +2,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg"
+import { useAuth } from "../../utils/AuthContext";
 import { emailRgx, ErrBadEmail, ErrBadPsw, ErrLoginBadNameOrPsw, ErrLoginWrongToken, pswRgx } from "../../utils/constants";
-import { deleteToken, saveToken } from "../../utils/functions";
+import { deleteToken, saveToken } from "../../utils/cookieUtils";
 import { apiSignIn } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
 
 const Login = () => {
   const nav = useNavigate();
   const { updateUserContext } = useUserContext();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const [emailInputUsed, setEmailInputUsed] = useState(false);
   const [pswInputUsed, setPswInputUsed] = useState(false);
@@ -61,6 +63,7 @@ const Login = () => {
       console.log(resJson);
 
       saveToken(resJson.token);
+      setIsAuthenticated(true);
       updateUserContext({
         _id: resJson.user._id,
         name: resJson.user.name,
@@ -71,6 +74,7 @@ const Login = () => {
     } catch (error) {
       console.error(error);
       console.error(error.status);
+      setIsAuthenticated(false);
       updateUserContext({
         _id: "",
         name: "",

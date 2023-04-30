@@ -1,50 +1,54 @@
 import SearchForm from "../SearchForm/SearchForm";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
-import { useEffect, useState } from "react";
-import Preloader from "../Preloader/Preloader";
+import { useCallback, useEffect, useState } from "react";
 import { ErrBadFetch, ErrNotFound } from "../../utils/constants";
-import { apiGetMovies } from "../../utils/MainApi";
+import { MainApiHandler } from "../../utils/MainApiHandler";
+import { getCheckboxStateLS } from "../../utils/localStorageUtils";
 
 
 const SavedMovies = () => {
 
-  const [searchRes, setSearchRes] = useState();
-  const [showError, setShowError] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [savedMovies, setSavedMovies] = useState(null);
+  const [mainApiHandler, setMainApiHandler] = useState(null);
+  const [allSavedMovies, setAllSavedMovies] = useState(null);
+  const [currentSavedMovies, setCurrentSavedMovies] = useState(null);
 
-  const getSavedMovies = async () => {
-    const res = await apiGetMovies();
-    const resJ = await res.json();
-    console.log(resJ);
-    setSavedMovies(resJ);
-    setSearchRes(resJ);
+  const [showError, setShowError] = useState(false);
+  const [showOnlyShortMovies, setShowOnlyShortMovies] = useState(false);
+
+  const getSavedMovies = useCallback(async () => {
+    console.log(mainApiHandler)
+    const newAllSavedMovies = await mainApiHandler.fetchSavedMovies();
+
+    if (showOnlyShortMovies) {
+      const newSavedShortMovies = newAllSavedMovies.filter(
+        mov => mov.duration <= 40
+      )
+      setCurrentSavedMovies(newSavedShortMovies);
+    } else {
+      setCurrentSavedMovies(newAllSavedMovies);
+    }
+
+    setAllSavedMovies(newAllSavedMovies);
+  }, [mainApiHandler, showOnlyShortMovies])
+
+  const shortMoviesToggle = (state) => {
+    console.log(state);
+    setShowOnlyShortMovies(state);
   }
 
   const findMovies = (queryRef) => {
     try {
       setShowError(false);
-      if (savedMovies) {
 
-        setShowPreloader(true);
-        const newSearchRes = savedMovies.filter((item) => (
-          item.nameRU.toLowerCase()
-            .includes(queryRef.current.value.toLowerCase())
-          || item.nameEN.toLowerCase()
-            .includes(queryRef.current.value.toLowerCase())
-        ));
-
-        setTimeout(() => {
-          console.log("Fake loading");
-          setSearchRes(newSearchRes);
-          setShowPreloader(false);
-        }, "1000");
-
+      if (allSavedMovies && mainApiHandler && queryRef) {
+        const newSearchRes = mainApiHandler.searchMovies(
+          allSavedMovies, queryRef,
+        );
         console.log(
-          "Query: ", queryRef.current.value,
+          "Query: ", queryRef,
           "\nRes: ", newSearchRes,
-          // "\nMoviesDB: ", movies
         )
+        setCurrentSavedMovies(newSearchRes);
       }
 
     } catch (error) {
@@ -53,35 +57,39 @@ const SavedMovies = () => {
     }
   }
 
-  useEffect(() => { // Initial loading of Saved Movies
-    if (!savedMovies) {
-      getSavedMovies();
+  useEffect(() => { // Fetching saved movies if MainApiHandler is available
+    if (mainApiHandler) {
+      getSavedMovies()
     }
-  }, [savedMovies])
+  }, [getSavedMovies, mainApiHandler, showOnlyShortMovies])
 
+  useEffect(() => { // Initilizing MainApiHandler
+    setShowOnlyShortMovies(getCheckboxStateLS(true));
+    if (!mainApiHandler) {
+      const newMainApiHandler = new MainApiHandler();
+      setMainApiHandler(newMainApiHandler);
+    }
+  }, [mainApiHandler])
 
   return (
     <main className="saved-movies">
 
-      {searchRes // Error: no movies found
-        && searchRes.length === 0
-        && !showPreloader
+      {<SearchForm
+          onSearchClick={findMovies}
+          isSaved={true}
+          onToggle={shortMoviesToggle}
+        />}
+
+      {currentSavedMovies // Error: no movies found
+        && currentSavedMovies.length === 0
         && <p className="movies__err-msg">{ErrNotFound}</p>}
 
       {showError // Error: fetching failed
-        && !showPreloader
         && <p className="movies__err-msg">{ErrBadFetch}</p>}
 
-      {showPreloader && <Preloader />}
-      {savedMovies
-        && !showPreloader
-        && <SearchForm
-          onSearchClick={findMovies}
-          movies={searchRes}
-          isSaved={true}
-        />}
-      {!showPreloader
-        && <SavedMoviesCardList onRemove={getSavedMovies} movies={searchRes} />}
+      {currentSavedMovies
+        && <SavedMoviesCardList onRemove={getSavedMovies}
+          movies={currentSavedMovies} />}
     </main>
   );
 }

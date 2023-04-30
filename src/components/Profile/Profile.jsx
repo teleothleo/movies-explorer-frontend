@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/AuthContext";
 import { emailRgx, ErrProfileBadQuery, ErrProfileConfilct, nameRgx } from "../../utils/constants";
-import { deleteToken } from "../../utils/functions";
+import { deleteToken } from "../../utils/cookieUtils";
+import { saveCheckboxLS, saveSearchPromptLS } from "../../utils/localStorageUtils";
 import { apiGetMe, apiSignOut, apiUpdateUser } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
 
 
 const Profile = () => {
   const { updateUserContext } = useUserContext();
+  const { setIsAuthenticated } = useAuth();
   const nav = useNavigate();
 
   const [nameInputUsed, setNameInputUsed] = useState(false);
@@ -32,6 +35,11 @@ const Profile = () => {
       const res = await apiSignOut();
       console.log(res);
       deleteToken();
+      setIsAuthenticated(false);
+      saveCheckboxLS(false, true);
+      saveCheckboxLS(false, false);
+      saveSearchPromptLS("", true);
+      saveSearchPromptLS("", false);
       updateUserContext({
         _id: "",
         name: "",

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from "./components/App/App";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from "./utils/AuthContext";
 import { MenuProvider } from "./utils/MenuContext";
 import { UserProvider } from "./utils/UserContext";
 
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <MenuProvider>
     <UserProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </UserProvider>
   </MenuProvider>
 );

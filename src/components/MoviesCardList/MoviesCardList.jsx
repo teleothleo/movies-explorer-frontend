@@ -1,116 +1,82 @@
 import { useEffect, useState } from "react";
-import LoadCardList from "../LoadCardList/LoadCardList";
+import LoaderBtn from "../LoaderBtn/LoaderBtn";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { apiGetMovies } from "../../utils/MainApi.js";
 
 const MoviesCardList = ({
-  showLoadCardList, howManyCardsToLoadOnClick,
-  initialCardsQuantity, cardsData
+  showLoaderBtn, cardsToLoadOnClickQuantity,
+  initialCardsQuantity, cardsData, onLikeOrRemove
 }) => {
 
   const [currentCardsQuanitty, setCurrentCardsQuanitty] = useState(initialCardsQuantity);
   const [currentCardsData, setCurrentCardsData] = useState(null);
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(false);
-  const [savedMovies, setSavedMovies] = useState(null);
-  const [userCardsData, setUserCardsData] = useState(null);
 
   const loadMore = () => {
-    setCurrentCardsQuanitty(howManyCardsToLoadOnClick + currentCardsQuanitty);
+    setCurrentCardsQuanitty(cardsToLoadOnClickQuantity + currentCardsQuanitty);
   }
 
-  const getSavedMovies = async () => {
-    const res = await apiGetMovies();
-    const resJ = await res.json();
-    console.log(resJ);
-    setSavedMovies(resJ);
-  }
-
-  useEffect(() => { // Disabling Loader button if there is no more Cards to load
+  // Disabling Loader button if there is no more Cards to load
+  useEffect(() => {
     if (cardsData) {
-      console.log(`CurrentCardsQuanitty: ${currentCardsQuanitty},
-        Total CardsQuanitty: ${cardsData.length}`)
-      if (currentCardsQuanitty >= cardsData.length) {
+/*        console.log(`CurrentCardsQuanitty: ${currentCardsQuanitty},
+        Total CardsQuanitty: ${cardsData.length}`) */
+       if (currentCardsQuanitty >= cardsData.length) {
         setLoadMoreDisabled(true);
+      } else {
+        setLoadMoreDisabled(false);
       }
     }
   }, [cardsData, currentCardsQuanitty])
 
-
-  useEffect(() => { // Resetting currentCardsQuanitty if new search was made
+  // Resetting currentCardsQuanitty if new search was made
+  useEffect(() => {
     if (cardsData !== currentCardsData) {
       setCurrentCardsQuanitty(initialCardsQuantity);
       setCurrentCardsData(cardsData);
     }
   }, [cardsData, currentCardsData, initialCardsQuantity])
 
-  useEffect(() => { // Setting likes for CardsData
-    if (cardsData && savedMovies) {
-      const newUserCardsData = cardsData.map((cardData) => {
-        const savedMovie = savedMovies.find(
-          (savedMovie) => savedMovie.movieId === cardData.id
-        );
-
-        if (savedMovie) { // In case the is a SavedMovie with the same ID as from BF_DB
-          cardData.isLiked = true;
-          cardData._id = savedMovie._id;
-          return cardData;
-        } else {
-          cardData.isLiked = false;
-          return cardData;
-        }
-      });
-
-      console.log(newUserCardsData);
-      setUserCardsData(newUserCardsData);
-    }
-  }, [cardsData, savedMovies])
-
-  useEffect(() => { // Initial loading of Saved Movies
-    if (!savedMovies) {
-      getSavedMovies();
-    }
-  }, [savedMovies])
-
   return (
-      <>
-        <section className={"movies-card-list"}>
-          {userCardsData
-            // Creating an Array of size CurrentCardsQuanitty
-            && Array.from({ length: currentCardsQuanitty }).map((_, index) => {
-              const userCardData = userCardsData[index];
+    <>
+      <section className={"movies-card-list"}>
+        {cardsData
+          && Array.from({ length: currentCardsQuanitty }).map((_, index) => {
+            const cardData = cardsData[index];
 
-              if (!userCardData) {
-                return null;
-              } // There are less Cards in userCardData than InitialCardsQuantity
+            // There are less Cards in cardsData than InitialCardsQuantity
+            if (!cardData) {
+              return null;
+            }
 
-              return (
-                <MoviesCard
-                  _id={userCardData._id}
-                  onToggleLike={getSavedMovies}
-                  isLiked={userCardData.isLiked}
-                  isSaved={false}
-                  key={userCardData.id}
-                  country={userCardData.country}
-                  director={userCardData.director}
-                  duration={userCardData.duration}
-                  year={userCardData.year}
-                  description={userCardData.description}
-                  image={userCardData.image}
-                  trailerLink={userCardData.trailerLink}
-                  movieId={userCardData.id}
-                  nameEN={userCardData.nameEN}
-                  nameRU={userCardData.nameRU}
-                />
-              );
-            })}
+            return (
+              <MoviesCard
+                currentCardsQuanitty={currentCardsQuanitty}
+                _id={cardData._id}
+                key={cardData.id}
+                onLikeOrRemove={onLikeOrRemove}
+                isLiked={cardData.isLiked}
+                isSaved={false}
+                country={cardData.country}
+                director={cardData.director}
+                duration={cardData.duration}
+                year={cardData.year}
+                description={cardData.description}
+                image={cardData.image}
+                trailerLink={cardData.trailerLink}
+                movieId={cardData.id}
+                nameEN={cardData.nameEN}
+                nameRU={cardData.nameRU}
+              />
+            )
+          })
+        }
+      </section>
 
-        </section>
-
-        {showLoadCardList
-          && !loadMoreDisabled
-          && <LoadCardList onLoadMore={loadMore} />}
-      </>
-    )
+      {showLoaderBtn
+        && !loadMoreDisabled
+        && <LoaderBtn onLoadMore={loadMore} />}
+    </>
+  )
 }
 
 export default MoviesCardList;

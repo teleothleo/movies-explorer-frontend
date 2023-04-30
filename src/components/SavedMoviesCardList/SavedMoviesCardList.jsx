@@ -9,7 +9,7 @@ const SavedMoviesCardList = ({ onRemove, movies }) => {
           <MoviesCard
             key={savedMovie._id}
             _id={savedMovie._id}
-            onToggleLike={onRemove}
+            onLikeOrRemove={onRemove}
             isSaved={true}
             country={savedMovie.country}
             director={savedMovie.director}

@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg"
+import { useAuth } from "../../utils/AuthContext";
 import { emailRgx, ErrBadEmail, ErrBadName, ErrBadPsw, ErrBadReg, ErrRegConfilct, nameRgx, pswRgx } from "../../utils/constants";
-import { deleteToken, saveToken, } from "../../utils/functions";
+import { deleteToken, saveToken, } from "../../utils/cookieUtils";
 import { apiSignIn, apiSignUp } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
 
 const Register = () => {
   const nav = useNavigate();
   const { updateUserContext } = useUserContext();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const [nameInputUsed, setNameInputUsed] = useState(false);
   const [emailInputUsed, setEmailInputUsed] = useState(false);
@@ -110,6 +112,7 @@ const Register = () => {
         name: resJson.user.name,
         email: resJson.user.email,
       })
+      setIsAuthenticated(true);
       nav("/movies", { replace: true });
 
     } catch (error) {
@@ -119,6 +122,7 @@ const Register = () => {
         name: "",
         email: "",
       })
+      setIsAuthenticated(false);
       deleteToken();
       setBadReg(true);
     }

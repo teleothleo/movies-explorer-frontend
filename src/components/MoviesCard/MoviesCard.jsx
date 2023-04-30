@@ -1,11 +1,12 @@
-import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import { BF_URL } from "../../utils/constants";
+import { convertMinutesToHours } from "../../utils/utils";
 import { apiCreateMovie, apiDeleteMovie } from "../../utils/MainApi";
 
 const MoviesCard = ({
+  currentCardsQuanitty,
   _id,
-  onToggleLike,
+  onLikeOrRemove,
   isSaved,
   isLiked,
   country,
@@ -24,7 +25,7 @@ const MoviesCard = ({
   const [parsedDuration, setParsedDuration] = useState(duration);
 
   const toggleLike = async () => {
-    if (isSaved) {
+    if (likedState) {
       const res = await apiDeleteMovie(_id);
       const resJson = await res.json();
       console.log(resJson);
@@ -47,22 +48,19 @@ const MoviesCard = ({
     }
 
     setLikedState(!likedState);
-    onToggleLike();
+    onLikeOrRemove(currentCardsQuanitty);
   }
 
-  const convertMinutesToHours = useCallback(() => {
-    const hours = Math.floor(duration / 60);
-    const minutes = duration % 60;
-    if (minutes === 0) {
-      setParsedDuration(`${hours}ч`);
-    } else {
-      setParsedDuration(`${hours}ч ${minutes}м`);
-    }
-  }, [duration])
+  const removeSavedMovie = async () => {
+    const res = await apiDeleteMovie(_id);
+    const resJson = await res.json();
+    console.log(resJson);
+    onLikeOrRemove();
+  }
 
   useEffect(() => {
-    convertMinutesToHours();
-  }, [convertMinutesToHours, duration])
+    setParsedDuration(convertMinutesToHours(duration));
+  }, [duration])
 
   if (isSaved) {
     return (
@@ -70,7 +68,7 @@ const MoviesCard = ({
         <img src={image} className="movies-card__image" alt="Movie screenshot" />
         <div className="movies-card__title-wrapper movies-card__title-wrapper_saved">
           <h2 className="movies-card__title">{nameRU}</h2>
-          <button onClick={toggleLike} className="movies-card__remove" />
+          <button onClick={removeSavedMovie} className="movies-card__remove" />
         </div>
         <p className="movies-card__duration movies-card__duration_saved">{parsedDuration}</p>
       </article>
