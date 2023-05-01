@@ -200,11 +200,11 @@ const Movies = () => {
 
 
   return (
-    <main className="allMovies">
+    <main className="movies">
 
       {<SearchForm onSearchClick={findMovies} onToggle={shortMoviesToggle} isSaved={false} />}
 
-      {showNotFoundError // Error: no allMovies found
+      {showNotFoundError // Error: no movies found
         && !showPreloader
         && <p className="movies__err-msg">{ErrNotFound}</p>}
 
