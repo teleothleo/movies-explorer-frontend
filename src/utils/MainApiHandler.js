@@ -1,7 +1,6 @@
 import { apiGetMovies } from "./MainApi";
 
 export class MainApiHandler {
-  constructor() { }
 
   async fetchSavedMovies() {
     const res = await apiGetMovies();

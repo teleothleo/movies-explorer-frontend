@@ -1,4 +1,4 @@
-import MoviesApi, { apiBfFetchMovies } from "./MoviesApi";
+import { apiBfFetchMovies } from "./MoviesApi";
 
 export class MoviesApiHandler {
   constructor() {
