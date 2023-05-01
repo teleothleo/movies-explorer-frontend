@@ -1,9 +1,9 @@
 export const saveUserId = (userId) => {
-  document.cookie = `userId=${userId}`;
+  document.cookie = `userId=${userId}; SameSite=None; Secure; path=/; domain=.nomoredomains.monster;`;
 }
 
 export const saveToken = (token) => {
-  document.cookie = `token=${token}`;
+  document.cookie = `token=${token}; SameSite=None; Secure; path=/; domain=.nomoredomains.monster;`;
 }
 
 export const getToken = () => {
@@ -20,4 +20,3 @@ export const getToken = () => {
 export const deleteToken = () => {
   document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
-
