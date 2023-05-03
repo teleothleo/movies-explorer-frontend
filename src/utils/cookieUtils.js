@@ -1,5 +1,5 @@
 export const saveUserId = (userId) => {
-  document.cookie = `userId=${userId}; SameSite=None; Secure; path=/; domain=.nomoredomains.monster;`;
+  document.cookie = `userId=${userId}; SameSite=None; Secure; path=/;`;
 }
 
 export const saveToken = (token) => {
