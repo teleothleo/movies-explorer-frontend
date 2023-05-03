@@ -3,7 +3,8 @@ export const saveUserId = (userId) => {
 }
 
 export const saveToken = (token) => {
-  document.cookie = `token=${token}; SameSite=None; Secure; path=/; domain=.nomoredomains.monster;`;
+  // document.cookie = `token=${token}`;
+  document.cookie = `token=${token}; SameSite=None; Secure; path=/;`;
 }
 
 export const getToken = () => {

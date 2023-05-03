@@ -62,6 +62,10 @@
   border-bottom: 1px solid #000;
 }
 
+.register__input_disabled {
+  opacity: 0.5;
+}
+
 .register__error-input {
   display: none;
   font-weight: 400;

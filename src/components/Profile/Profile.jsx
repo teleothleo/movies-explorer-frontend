@@ -73,6 +73,7 @@ const Profile = () => {
     ) {
 
       try {
+        setEditEnabled(false);
         const res = await apiUpdateUser(
           nameRef.current.value,
           emailRef.current.value,
@@ -85,8 +86,15 @@ const Profile = () => {
 
         setName(resJson.name);
         setEmail(resJson.email);
+        updateUserContext({
+          _id: resJson._id,
+          name: resJson.name,
+          email: resJson.email,
+        })
         setErrBadQuery(false);
         setErrConflict(false);
+        setNameInputValid(false);
+        setEmailInputValid(false);
       } catch (error) {
         if (error.status === 400) {
           setErrBadQuery(true);
@@ -96,16 +104,27 @@ const Profile = () => {
           setErrConflict(true);
         }
         console.error(error);
+        setEditEnabled(true);
       }
     }
   }
 
   const handleNameInputChange = () => {
-    setNameInputValid(nameRgx.test(nameRef.current.value));
+    if (nameRgx.test(nameRef.current.value)
+      && nameRef.current.value !== name) {
+      setNameInputValid(true);
+    } else {
+      setNameInputValid(false);
+    }
   }
 
   const handleEmailInputChange = () => {
-    setEmailInputValid(emailRgx.test(emailRef.current.value));
+    if (emailRgx.test(emailRef.current.value)
+      && emailRef.current.value !== email) {
+      setEmailInputValid(true)
+    } else {
+      setEmailInputValid(false)
+    }
   }
 
   useEffect(() => {
@@ -137,6 +156,7 @@ const Profile = () => {
             <label className="profile__label" htmlFor="prof-name">Имя</label>
             {name
               && <input className="profile__input" ref={nameRef}
+                disabled={editEnabled ? false : true}
                 onInput={() => handleAutocomplete("name")}
                 onChange={handleNameInputChange}
                 defaultValue={name}
@@ -147,6 +167,7 @@ const Profile = () => {
             <label className="profile__label" htmlFor="prof-email">E-mail</label>
             {email
               && <input className="profile__input" ref={emailRef}
+                disabled={editEnabled ? false : true}
                 onInput={() => handleAutocomplete("email")}
                 onChange={handleEmailInputChange}
                 defaultValue={email}

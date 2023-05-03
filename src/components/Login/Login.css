@@ -62,6 +62,10 @@
   border-bottom: 1px solid #000;
 }
 
+.login__input_disabled {
+  opacity: 0.5;
+}
+
 .login__error-span {
   display: none;
   font-weight: 400;
