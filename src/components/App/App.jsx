@@ -10,12 +10,11 @@ import Register from "../Register/Register";
 import BadWay from "../BadWay/BadWay";
 import { useAuth } from "../../utils/AuthContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { useEffect } from "react";
 
 function App() {
 
   const { isAuthenticated, isLoading } = useAuth();
-  console.log(isAuthenticated);
+  console.log("Authenticated: ", isAuthenticated);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -50,8 +49,8 @@ function App() {
             } />
           }
         />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
+        <Route path="/signin" element={ <Login isAuthenticated={isAuthenticated} />} />
+        <Route path="/signup" element={ <Register isAuthenticated={isAuthenticated} />} />
         <Route path="/*" element={<BadWay />} />
       </Routes>
       <Footer />
