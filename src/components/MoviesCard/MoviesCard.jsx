@@ -58,28 +58,35 @@ const MoviesCard = ({
     onLikeOrRemove();
   }
 
+  const openTrailerLink = (e) => {
+  if (e.target.tagName !== 'BUTTON') {
+    window.open(trailerLink, '_blank', 'noopener noreferrer');
+  }
+};
+
+
   useEffect(() => {
     setParsedDuration(convertMinutesToHours(duration));
   }, [duration])
 
   if (isSaved) {
     return (
-      <article className="movies-card movies-card_saved">
+      <article onClick={openTrailerLink} className="movies-card movies-card_saved">
         <img src={image} className="movies-card__image" alt="Movie screenshot" />
         <div className="movies-card__title-wrapper movies-card__title-wrapper_saved">
           <h2 className="movies-card__title">{nameRU}</h2>
-          <button onClick={removeSavedMovie} className="movies-card__remove" />
+          <button onClick={(e) => removeSavedMovie(e)} className="movies-card__remove" />
         </div>
         <p className="movies-card__duration movies-card__duration_saved">{parsedDuration}</p>
       </article>
     )
   } else {
     return (
-      <article className="movies-card">
+      <article onClick={openTrailerLink} className="movies-card">
         <img src={BF_URL.concat(image.url)} className="movies-card__image" alt="Movie screenshot" />
         <div className="movies-card__title-wrapper">
           <h2 className="movies-card__title">{nameRU}</h2>
-          <button onClick={toggleLike} className={`${likedState
+          <button onClick={(e) => toggleLike(e)} className={`${likedState
             ? "movies-card__heart movies-card__heart_active"
             : "movies-card__heart"
             }`} />
