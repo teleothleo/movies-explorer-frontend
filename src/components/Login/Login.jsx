@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg"
@@ -8,10 +7,10 @@ import { deleteToken, saveToken } from "../../utils/cookieUtils";
 import { apiSignIn } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
 
-const Login = () => {
+const Login = ({ isAuthenticated }) => {
   const nav = useNavigate();
   const { updateUserContext } = useUserContext();
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated } = useAuth();
 
   const [emailInputUsed, setEmailInputUsed] = useState(false);
   const [pswInputUsed, setPswInputUsed] = useState(false);
@@ -19,6 +18,7 @@ const Login = () => {
   const [emailInputValid, setEmailInputValid] = useState(true);
   const [pswInputValid, setPswInputValid] = useState(true);
   const [submitEnabled, setSubmitEnabled] = useState(false);
+  const [querying, setQuerying] = useState(false);
 
   const [badLogin, setBadLogin] = useState(false);
   const [badToken, setBadToken] = useState(false);
@@ -52,6 +52,7 @@ const Login = () => {
 
   const signIn = async () => {
     try {
+      setQuerying(true);
       const res = await apiSignIn(
         emailRef.current.value,
         pswRef.current.value
@@ -69,6 +70,7 @@ const Login = () => {
         name: resJson.user.name,
         email: resJson.user.email,
       })
+      setQuerying(false);
       nav("/movies", { replace: true });
 
     } catch (error) {
@@ -89,6 +91,7 @@ const Login = () => {
         setBadLogin(false);
         setBadToken(true);
       }
+      setQuerying(false);
     }
   }
 
@@ -110,6 +113,12 @@ const Login = () => {
     }
   }, [emailInputUsed, emailInputValid, pswInputUsed, pswInputValid, validateForm])
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      nav("/", { replace: true })
+    }
+  }, [isAuthenticated, nav])
+
   return (
     <main className="login">
       <div>
@@ -120,18 +129,26 @@ const Login = () => {
         <form className="login__form" onSubmit={submitForm}>
 
           <label className="login__label" htmlFor="login-email">E-mail</label>
-          <input onInput={() => handleAutocomplete("email")} className="login__input" ref={emailRef}
+          <input onInput={() => handleAutocomplete("email")} ref={emailRef}
+            className={`${querying
+              ? "login__input login__input_disabled"
+              : "login__input"}`}
             onChange={handleEmailInputChange} id="login-email"
-            type="email" placeholder=".." required />
+            type="email" placeholder=".." required
+            disabled={querying ? true : false} />
           <span className={emailInputValid
             ? "login__error-span"
             : "login__error-span login__error-span_active"
           }>{ErrBadEmail}</span>
 
           <label className="login__label" htmlFor="login-psw">Пароль</label>
-          <input onInput={() => handleAutocomplete("psw")} className="login__input" ref={pswRef}
+          <input onInput={() => handleAutocomplete("psw")}
+            className={`${querying
+              ? "login__input login__input_disabled"
+              : "login__input"}`} ref={pswRef}
             onChange={handlePswInputChange} id="login-psw"
-            type="password" placeholder=".." required />
+            type="password" placeholder=".." required
+            disabled={querying ? true : false} />
           <span className={pswInputValid
             ? "login__error-span"
             : "login__error-span login__error-span_active"
