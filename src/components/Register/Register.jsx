@@ -7,14 +7,15 @@ import { deleteToken, saveToken, } from "../../utils/cookieUtils";
 import { apiSignIn, apiSignUp } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
 
-const Register = () => {
+const Register = ({ isAuthenticated }) => {
   const nav = useNavigate();
   const { updateUserContext } = useUserContext();
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated } = useAuth();
 
   const [nameInputUsed, setNameInputUsed] = useState(false);
   const [emailInputUsed, setEmailInputUsed] = useState(false);
   const [pswInputUsed, setPswInputUsed] = useState(false);
+  const [querying, setQuerying] = useState(false);
 
   const [nameInputValid, setNameInputValid] = useState(true);
   const [emailInputValid, setEmailInputValid] = useState(true);
@@ -68,6 +69,7 @@ const Register = () => {
 
   const signUp = async () => {
     try {
+      setQuerying(true);
       const res = await apiSignUp(
         nameRef.current.value,
         emailRef.current.value,
@@ -94,6 +96,7 @@ const Register = () => {
         setBadReg(true);
         setBadRegConflict(false);
       }
+      setQuerying(false);
     }
   }
 
@@ -113,8 +116,8 @@ const Register = () => {
         email: resJson.user.email,
       })
       setIsAuthenticated(true);
+      setQuerying(false);
       nav("/movies", { replace: true });
-
     } catch (error) {
       console.error(error);
       updateUserContext({
@@ -148,6 +151,12 @@ const Register = () => {
     }
   }, [emailInputUsed, nameInputUsed, pswInputUsed, validateForm])
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      nav("/", { replace: true })
+    }
+  }, [isAuthenticated, nav])
+
   return (
     <main className="register">
       <div>
@@ -157,21 +166,33 @@ const Register = () => {
         <h1 className="register__greeting">Добро пожаловать!</h1>
         <form className="register__form" onSubmit={submitForm} >
           <label className="register__label" htmlFor="reg-name">Имя</label>
-          <input onInput={() => handleAutocomplete("name")} className="register__input" ref={nameRef}
+          <input onInput={() => handleAutocomplete("name")} ref={nameRef}
+            className={`${querying
+              ? "register__input register__input_disabled"
+              : "register__input"}`}
+            disabled={querying ? true : false}
             onChange={handleNameInputChange} id="reg-name"
             type="text" placeholder=".." required />
           <span className={nameInputValid
             ? "register__error-input"
             : "register__error-input register__error-input_active"}>{ErrBadName}</span>
           <label className="register__label" htmlFor="reg-email">E-mail</label>
-          <input onInput={() => handleAutocomplete("email")} className="register__input" ref={emailRef}
+          <input onInput={() => handleAutocomplete("email")} ref={emailRef}
+            className={`${querying
+              ? "register__input register__input_disabled"
+              : "register__input"}`}
+            disabled={querying ? true : false}
             onChange={handleEmailInputChange} id="reg-email"
             type="email" placeholder=".." required />
           <span className={emailInputValid
             ? "register__error-input"
             : "register__error-input register__error-input_active"}>{ErrBadEmail}</span>
           <label className="register__label" htmlFor="reg-psw">Пароль</label>
-          <input onInput={() => handleAutocomplete("psw")} className="register__input" ref={pswRef}
+          <input onInput={() => handleAutocomplete("psw")} ref={pswRef}
+            className={`${querying
+              ? "register__input register__input_disabled"
+              : "register__input"}`}
+            disabled={querying ? true : false}
             onChange={handlePswInputChange} id="reg-psw"
             type="password" placeholder=".." required />
           <span className={pswInputValid
