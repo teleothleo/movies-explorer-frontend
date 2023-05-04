@@ -4,12 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { ErrBadFetch, ErrNotFound } from "../../utils/constants";
 import { MainApiHandler } from "../../utils/MainApiHandler";
 import { getCheckboxStateLS } from "../../utils/localStorageUtils";
-
+// TODO do a findMovies logic like in Movies
 
 const SavedMovies = () => {
 
   const [mainApiHandler, setMainApiHandler] = useState(null);
   const [allSavedMovies, setAllSavedMovies] = useState(null);
+  const [savedShortMovies, setSavedShortMovies] = useState(null);
   const [currentSavedMovies, setCurrentSavedMovies] = useState(null);
 
   const [showError, setShowError] = useState(false);
@@ -24,6 +25,7 @@ const SavedMovies = () => {
         mov => mov.duration <= 40
       )
       setCurrentSavedMovies(newSavedShortMovies);
+      setSavedShortMovies(newSavedShortMovies)
     } else {
       setCurrentSavedMovies(newAllSavedMovies);
     }
@@ -41,14 +43,19 @@ const SavedMovies = () => {
       setShowError(false);
 
       if (allSavedMovies && mainApiHandler && queryRef) {
-        const newSearchRes = mainApiHandler.searchMovies(
-          allSavedMovies, queryRef,
-        );
-        console.log(
-          "Query: ", queryRef,
-          "\nRes: ", newSearchRes,
-        )
-        setCurrentSavedMovies(newSearchRes);
+        if (showOnlyShortMovies) {
+          const newSearchRes = mainApiHandler.searchMovies(
+            savedShortMovies, queryRef,
+          );
+          setCurrentSavedMovies(newSearchRes);
+          console.log("Res (shorts): ", newSearchRes)
+        } else {
+          const newSearchRes = mainApiHandler.searchMovies(
+            allSavedMovies, queryRef,
+          );
+          setCurrentSavedMovies(newSearchRes);
+          console.log("Res: ", newSearchRes)
+        }
       }
 
     } catch (error) {
@@ -75,10 +82,10 @@ const SavedMovies = () => {
     <main className="saved-movies">
 
       {<SearchForm
-          onSearchClick={findMovies}
-          isSaved={true}
-          onToggle={shortMoviesToggle}
-        />}
+        onSearchClick={findMovies}
+        isSaved={true}
+        onToggle={shortMoviesToggle}
+      />}
 
       {currentSavedMovies // Error: no movies found
         && currentSavedMovies.length === 0

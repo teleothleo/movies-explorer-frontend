@@ -51,8 +51,10 @@ const Movies = () => {
             mov => mov.duration <= 40
           );
           setCurrentMovies(newSearchResShortMovies);
+          console.log("Res (shorts): ", newSearchRes)
         } else {
           setCurrentMovies(newSearchRes);
+          console.log("Res: ", newSearchRes)
         }
         setSearchPrompt(localSearchPrompt);
       }

@@ -32,7 +32,7 @@ const SearchForm = ({ onSearchClick, isSaved, onToggle }) => {
         ></input>
         <button className="search-form__btn btn-black" />
       </form>
-      <FilterCheckbox isSaved={isSaved} onToggle={onToggle} onToggleCleanInput={cleanInput} />
+      <FilterCheckbox isSaved={isSaved} onToggle={onToggle} onToggleCleanInput={cleanInput}/>
     </section >
   );
 }
