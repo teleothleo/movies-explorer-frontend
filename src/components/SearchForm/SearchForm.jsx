@@ -18,7 +18,9 @@ const SearchForm = ({ onSearchClick, isSaved, onToggle }) => {
   }
 
   useEffect(() => {
-    queryRef.current.value = getSearchPromptLS(isSaved);
+    if (!isSaved) {
+      queryRef.current.value = getSearchPromptLS(false);
+    }
   }, [isSaved])
 
   return (

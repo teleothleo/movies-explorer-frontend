@@ -75,7 +75,6 @@
   background-color: white;
   border: none;
   background-image: url("../../images/card_remove.svg");
-  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   transition: 0.2s ease-out;
