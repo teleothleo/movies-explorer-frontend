@@ -51,6 +51,7 @@
   background-color: white;
   border: none;
   background-image: url("../../images/heart.svg");
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -63,6 +64,7 @@
 
 .movies-card__heart_active {
   background-image: url("../../images/heart-active.svg");
+  background-color: transparent;
 }
 
 .movies-card__remove {
