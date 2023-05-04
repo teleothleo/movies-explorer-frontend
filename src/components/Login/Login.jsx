@@ -52,6 +52,7 @@ const Login = ({ isAuthenticated }) => {
 
   const signIn = async () => {
     try {
+      setSubmitEnabled(false);
       setQuerying(true);
       const res = await apiSignIn(
         emailRef.current.value,
@@ -72,7 +73,7 @@ const Login = ({ isAuthenticated }) => {
       })
       setQuerying(false);
       nav("/movies", { replace: true });
-
+      setSubmitEnabled(true);
     } catch (error) {
       console.error(error);
       console.error(error.status);
@@ -92,6 +93,7 @@ const Login = ({ isAuthenticated }) => {
         setBadToken(true);
       }
       setQuerying(false);
+      setSubmitEnabled(true);
     }
   }
 

@@ -69,6 +69,7 @@ const Register = ({ isAuthenticated }) => {
 
   const signUp = async () => {
     try {
+      setSubmitEnabled(false);
       setQuerying(true);
       const res = await apiSignUp(
         nameRef.current.value,
@@ -85,7 +86,7 @@ const Register = ({ isAuthenticated }) => {
         emailRef.current.value,
         pswRef.current.value
       )
-
+      setSubmitEnabled(true);
     } catch (error) {
       console.error(error);
       console.error(error.status);
@@ -97,6 +98,7 @@ const Register = ({ isAuthenticated }) => {
         setBadRegConflict(false);
       }
       setQuerying(false);
+      setSubmitEnabled(true);
     }
   }
 
