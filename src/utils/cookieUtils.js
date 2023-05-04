@@ -1,6 +1,18 @@
 export const saveUserId = (userId) => {
-  // document.cookie = `userId=${userId}; SameSite=None; Secure; path=/;`;
-  document.cookie = `userId=${userId}; max-age=${60*60*24*7}; SameSite=None; Secure; path=/; domain=nomoredomains.monster;`;
+  if (process.env.NODE_ENV === "development") {
+    document.cookie = `userId=${userId}; SameSite=None; Secure; path=/;`;
+  } else {
+    document.cookie = `userId=${userId}; max-age=${60 * 60 * 24 * 7}; SameSite=None; Secure; path=/; domain=nomoredomains.monster;`;
+  }
+}
+
+export const deleteUserId = () => {
+  console.log(process.env.NODE_ENV);
+  if (process.env.NODE_ENV === "development") {
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  } else {
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=nomoredomains.monster;";
+  }
 }
 
 export const getUserId = () => {
@@ -14,14 +26,22 @@ export const getUserId = () => {
   return null;
 };
 
-export const deleteUserId = () => {
-  document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=nomoredomains.monster;";
+export const saveToken = (token) => {
+  console.log(process.env.NODE_ENV);
+  if (process.env.NODE_ENV === "development") {
+  document.cookie = `token=${token}; SameSite=None; Secure; path=/;`;
+  } else {
+  document.cookie = `token=${token}; max-age=${60*60*24*7}; SameSite=None; Secure; path=/; domain=nomoredomains.monster;`;
+  }
 }
 
-export const saveToken = (token) => {
-  // document.cookie = `token=${token}; SameSite=None; Secure; path=/;`;
-  document.cookie = `token=${token}; max-age=${60*60*24*7}; SameSite=None; Secure; path=/; domain=nomoredomains.monster;`;
-}
+export const deleteToken = () => {
+  if (process.env.NODE_ENV === "development") {
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  } else {
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=nomoredomains.monster;";
+  }
+};
 
 export const getToken = () => {
   const cookies = document.cookie.split(";");
@@ -32,8 +52,4 @@ export const getToken = () => {
     }
   }
   return null;
-};
-
-export const deleteToken = () => {
-  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=nomoredomains.monster;";
 };
