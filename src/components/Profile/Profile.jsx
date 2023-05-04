@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/AuthContext";
 import { emailRgx, ErrProfileBadQuery, ErrProfileConfilct, nameRgx } from "../../utils/constants";
-import { deleteToken } from "../../utils/cookieUtils";
+import { deleteToken, deleteUserId, saveUserId } from "../../utils/cookieUtils";
 import { saveCheckboxLS, saveSearchPromptLS } from "../../utils/localStorageUtils";
 import { apiGetMe, apiSignOut, apiUpdateUser } from "../../utils/MainApi";
 import { useUserContext } from "../../utils/UserContext";
@@ -35,11 +35,12 @@ const Profile = () => {
       const res = await apiSignOut();
       console.log(res);
       deleteToken();
+      deleteUserId();
       setIsAuthenticated(false);
-      saveCheckboxLS(false, true);
-      saveCheckboxLS(false, false);
-      saveSearchPromptLS("", true);
-      saveSearchPromptLS("", false);
+      saveCheckboxLS(false, true); // for Saved Movies
+      saveCheckboxLS(false, false); // for Movies
+      saveSearchPromptLS("", true); // for Saved Movies
+      saveSearchPromptLS("", false); // for Movies
       updateUserContext({
         _id: "",
         name: "",
@@ -67,7 +68,10 @@ const Profile = () => {
     setEmail(res.email);
   }
 
-  const updateUserInfo = async () => {
+  const submitForm = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
     if (
       nameInputValid || emailInputValid
     ) {
@@ -91,6 +95,7 @@ const Profile = () => {
           name: resJson.name,
           email: resJson.email,
         })
+        saveUserId(resJson._id);
         setErrBadQuery(false);
         setErrConflict(false);
         setNameInputValid(false);
@@ -151,7 +156,7 @@ const Profile = () => {
     <main className="profile">
       <div>
         {name && <h1 className="profile__greeting">{`Привет, ${name}!`}</h1>}
-        <form className="profile__form">
+        <form className="profile__form" onSubmit={submitForm}>
           <div className="profile__input-group">
             <label className="profile__label" htmlFor="prof-name">Имя</label>
             {name
@@ -188,7 +193,7 @@ const Profile = () => {
           </span>}
 
         {editEnabled && <button disabled={!submitEnabled}
-          onClick={updateUserInfo}
+          onClick={submitForm}
           className={submitEnabled
             ? "profile__submit-btn btn-black"
             : "profile__submit-btn profile__submit-btn_disabled"
