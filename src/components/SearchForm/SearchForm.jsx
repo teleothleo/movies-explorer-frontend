@@ -12,6 +12,13 @@ const SearchForm = ({ onSearchClick, isSaved, onToggle }) => {
     saveSearchPromptLS(queryRef.current.value, isSaved)
     onSearchClick(queryRef.current.value)
   }
+
+  const cleanInput = () => {
+    if (isSaved) {
+      queryRef.current.value = "";
+    }
+  }
+
   useEffect(() => {
     if (!isSaved) {
       queryRef.current.value = getSearchPromptLS(false);
@@ -27,7 +34,7 @@ const SearchForm = ({ onSearchClick, isSaved, onToggle }) => {
         ></input>
         <button className="search-form__btn btn-black" />
       </form>
-      <FilterCheckbox isSaved={isSaved} onToggle={onToggle} />
+      <FilterCheckbox isSaved={isSaved} onToggle={onToggle} onToggleCleanInput={cleanInput} />
     </section >
   );
 }
