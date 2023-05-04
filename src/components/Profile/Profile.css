@@ -43,6 +43,11 @@
   flex-grow: 1;
 }
 
+.profile__input[disabled] {
+  background-color: transparent;
+  color: black;
+}
+
 .profile__input::placeholder {
   color: black;
 }
