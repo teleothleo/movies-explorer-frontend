@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getCheckboxStateLS, saveCheckboxLS } from "../../utils/localStorageUtils";
 
-const FilterCheckbox = ({ isSaved, onToggle, onToggleCleanInput }) => {
+const FilterCheckbox = ({ isSaved, onToggle }) => {
   const [showOnlyShortMovies, setShowOnlyShortMovies] = useState(false);
 
   const toggleCheckbox = () => {
@@ -9,7 +9,6 @@ const FilterCheckbox = ({ isSaved, onToggle, onToggleCleanInput }) => {
     saveCheckboxLS(state, isSaved)
     setShowOnlyShortMovies(state);
     onToggle(state);
-    onToggleCleanInput();
   }
 
   useState(() => {
