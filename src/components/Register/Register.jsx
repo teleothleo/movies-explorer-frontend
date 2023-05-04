@@ -57,7 +57,6 @@ const Register = ({ isAuthenticated }) => {
   }
 
   const submitForm = async (e) => {
-    e.preventDefault();
     handleNameInputChange();
     handleEmailInputChange();
     handlePswInputChange();
@@ -166,7 +165,7 @@ const Register = ({ isAuthenticated }) => {
           <img className="register__logo" src={logo} alt="Logo" />
         </a>
         <h1 className="register__greeting">Добро пожаловать!</h1>
-        <form className="register__form" onSubmit={submitForm} >
+        <form className="register__form">
           <label className="register__label" htmlFor="reg-name">Имя</label>
           <input onInput={() => handleAutocomplete("name")} ref={nameRef}
             className={`${querying

@@ -1,3 +1,4 @@
+//TODO: add onSubmit to forms here & in Reg
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg"
@@ -42,7 +43,6 @@ const Login = ({ isAuthenticated }) => {
   }
 
   const submitForm = async (e) => {
-    e.preventDefault();
     handleEmailInputChange();
     handlePswInputChange();
     if (validateForm()) {
@@ -128,7 +128,7 @@ const Login = ({ isAuthenticated }) => {
           <img className="login__logo" src={logo} alt="Logo" />
         </a>
         <h1 className="login__greeting">Рады видеть!</h1>
-        <form className="login__form" onSubmit={submitForm}>
+        <form className="login__form">
 
           <label className="login__label" htmlFor="login-email">E-mail</label>
           <input onInput={() => handleAutocomplete("email")} ref={emailRef}
