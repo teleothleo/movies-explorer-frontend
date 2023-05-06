@@ -3,15 +3,19 @@ import ReactDOM from 'react-dom/client';
 import App from "./components/App/App";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { MenuContextProvider } from "./utils/MenuContext";
+import { AuthProvider } from "./utils/AuthContext";
+import { MenuProvider } from "./utils/MenuContext";
+import { UserProvider } from "./utils/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <MenuContextProvider>
+  <MenuProvider>
+    <UserProvider>
+      <AuthProvider>
         <App />
-    </MenuContextProvider>
-  </React.StrictMode>
+      </AuthProvider>
+    </UserProvider>
+  </MenuProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

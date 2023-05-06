@@ -7,7 +7,7 @@ export const useMenuState = () => {
   return context;
 };
 
-export const MenuContextProvider = ({ children }) => {
+export const MenuProvider = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
 
   const setState = (state) => {

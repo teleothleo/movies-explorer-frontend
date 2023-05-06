@@ -27,6 +27,7 @@
   height: 100%;
   background-color: #F9F9F9;
   border: none;
+  outline-color: #d4d4d4;
 }
 
 .search-form__input::placeholder {

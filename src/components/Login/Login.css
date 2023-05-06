@@ -1,6 +1,6 @@
 .login {
   height: 100vh;
-  max-width: 396px;
+  width: 396px;
   margin: 0 auto;
   text-align: start;
   display: flex;
@@ -55,10 +55,15 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #E8E8E8;
   transition: 0.3s ease-out;
+  outline: none;
 }
 
 .login__input:focus {
   border-bottom: 1px solid #000;
+}
+
+.login__input_disabled {
+  opacity: 0.5;
 }
 
 .login__error-span {
@@ -85,6 +90,11 @@
   font-size: 14px;
   line-height: 17px;
   margin-bottom: 16px;
+}
+
+.login__submit-btn_disabled {
+  cursor: auto;
+  opacity: 0.25;
 }
 
 .login__signup-wrapper {

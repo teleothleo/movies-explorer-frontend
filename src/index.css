@@ -15,11 +15,12 @@
 @import url(./components/MoviesCardList/MoviesCardList.css);
 @import url(./components/NavTab/NavTab.css);
 @import url(./components/Portfolio/Portfolio.css);
-@import url(./components/LoadCardList/LoadCardList.css);
+@import url(./components/LoaderBtn/LoaderBtn.css);
 @import url(./components/Profile/Profile.css);
 @import url(./components/Promo/Promo.css);
 @import url(./components/Register/Register.css);
 @import url(./components/SavedMovies/SavedMovies.css);
+@import url(./components/SavedMoviesCardList/SavedMoviesCardList.css);
 @import url(./components/SearchForm/SearchForm.css);
 @import url(./components/Techs/Techs.css);
 /* @import url(./components/); */
